@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2012-10-22 16:08:34
 person: Adu
 **************************
@@ -16,11 +16,11 @@ person: Adu
  */
 
 class Controller_Base{
-    
+
     public $input = array();
-    
+
     public $config;
-    
+
     /**
      * 构造函数，初始化参数(ok)
      *
@@ -52,7 +52,7 @@ class Controller_Base{
             exit('Invalid input');
         }
     }
-    
+
     /**
      * 查找$this->input是否存在指定索引的变量？（ok）
      *
@@ -62,5 +62,5 @@ class Controller_Base{
 	public function input($k) {
 		return isset($this->input[$k]) ? (is_array($this->input[$k]) ? $this->input[$k] : trim($this->input[$k])) : NULL;
 	}
-    
+
 }

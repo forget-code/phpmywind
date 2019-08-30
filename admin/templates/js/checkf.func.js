@@ -1,7 +1,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2012-1-2 10:09:06
 person: Feng
 **************************
@@ -82,7 +82,7 @@ function cfm_upadmin()
 			$("#repassword").focus();
 			return false;
 		}
-		
+
 		if($("#oldpwd").val()!="" && $("#password").val()!="" && $("#repassword").val()!="")
 		{
 			if($("#oldpwd").val().length<5 || $("#oldpwd").val().length>20)
@@ -110,7 +110,7 @@ function cfm_upadmin()
 				return false;
 			}
 		}
-		
+
 	}
 }
 

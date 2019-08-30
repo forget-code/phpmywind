@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2012-10-22 16:08:34
 person: Adu
 **************************
@@ -54,13 +54,13 @@ $controller = new Controller_AvatarFlashUpload();
 $controller->config->set($config);
 //如果没有设置则自动生成运行该脚本的网址（不含脚本名称）
 if( empty($controller->config->uc_api) ){
-    $controller->config->uc_api = ( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 'https' : 'http' ). 
-                                  '://'. 
+    $controller->config->uc_api = ( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 'https' : 'http' ).
+                                  '://'.
                                   /* $_SERVER['HTTP_HOST'].  */
-                                  ( isset($_SERVER['HTTP_X_FORWARDED_HOST']) ? $_SERVER['HTTP_X_FORWARDED_HOST'] : (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '') ). 
+                                  ( isset($_SERVER['HTTP_X_FORWARDED_HOST']) ? $_SERVER['HTTP_X_FORWARDED_HOST'] : (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '') ).
                                   substr( $_SERVER['SCRIPT_NAME'], 0, strrpos($_SERVER['SCRIPT_NAME'], '/') );
 }
- 
+
 //运行控制器指定的动作
 
 if(method_exists($controller, $action)){

@@ -41,7 +41,7 @@
 			{
 				$modelPriv[] = $row['model'];
 			}
-			
+
 			if(empty($modelPriv))
 			{
 				echo '<div class="tc" style="width:180px;">~(>_<)~<br />您暂无任何可操作权限</div>';
@@ -55,7 +55,7 @@
 									'web_config'=>'<a href="web_config.php" target="main">网站信息配置</a>',
 									'upload_filemgr_sql'=>'<a href="upload_filemgr_sql.php" target="main">上传文件管理</a>',
 									'database_backup'=>'<a href="database_backup.php" target="main">数据库管理</a>');
-				
+
 				$leftMenu02_Str = '';
 				$leftMenu02_Arr = array('infoclass'=>'<a href="infoclass.php" target="main">栏目管理</a>',
 									'maintype'=>'<a href="maintype.php" target="main">二级类别管理</a>',
@@ -69,7 +69,7 @@
 									'diyfield'=>'<a href="diyfield.php" target="main">自定义字段</a>',
 									'infoflag'=>'<a href="infoflag.php" target="main" title="信息标记管理" class="infoattr"></a>',
 									'infosrc'=>'<a href="infosrc.php" target="main" title="信息来源管理" class="infosrc"></a>');
-									
+
 				$leftMenu03_Str = '';
 				$leftMenu03_Arr = array('member'=>'<a href="member.php" target="main">用户管理</a>',
 									'userfavorite'=>'<a href="userfavorite.php" target="main">用户收藏管理</a>',
@@ -83,7 +83,7 @@
 									'usergroup'=>'<a href="usergroup.php" target="main" title="用户组管理" class="usertype"></a>',
 									'adtype'=>'<a href="adtype.php" target="main" title="广告位管理" class="adtype"></a>',
 									'weblinktype'=>'<a href="weblinktype.php" target="main" title="友情链接类别" class="weblinktype"></a>');
-				
+
 				$leftMenu04_Str = '';
 				$leftMenu04_Arr = array('goodstype'=>'<a href="goodstype.php" target="main">商品类别管理</a>',
 									'goodsbrand'=>'<a href="goodsbrand.php" target="main">品牌类型管理</a>',
@@ -93,20 +93,20 @@
 									'paymode'=>'<a href="paymode.php" target="main">支付方式管理</a>',
 									'getmode'=>'<a href="getmode.php" target="main">货到方式管理</a>',
 									'goodsflag'=>'<a href="goodsflag.php" target="main" title="商品信息属性管理" class="goodsinfoattr"></a>');
-									
+
 				$leftMenu05_Str = '';
 				$leftMenu05_Arr = array('mobile'=>'<a href="mobile.php" target="main">手机网站设置</a>',
 									'nav'=>'<a href="nav.php" target="main">导航菜单设置</a>',
 									'editfile'=>'<a href="editfile.php" target="main">默认模板管理</a>');
-				
+
 				$leftMenu06_Str = '';
 				$leftMenu06_Arr = array('syscount'=>'<a href="syscount.php" target="main">数据统计</a>',
 									'upload_file'=>'<a href="upload_file.php" target="main">上传新文件</a>',
 									'check_bom'=>'<a href="check_bom.php" target="main">BOM检查</a>',
 									'help'=>'<a href="help.php" target="main">开发帮助</a>');
-	
-	
-	
+
+
+
 				//比对权限，构成字符串
 				foreach($leftMenu01_Arr as $k=>$v)
 				{
@@ -115,7 +115,7 @@
 						$leftMenu01_Str .= $v;
 					}
 				}
-				
+
 				foreach($leftMenu02_Arr as $k=>$v)
 				{
 					if(in_array($k,$modelPriv))
@@ -123,7 +123,7 @@
 						$leftMenu02_Str .= $v;
 					}
 				}
-				
+
 				foreach($leftMenu03_Arr as $k=>$v)
 				{
 					if(in_array($k,$modelPriv))
@@ -131,7 +131,7 @@
 						$leftMenu03_Str .= $v;
 					}
 				}
-				
+
 				foreach($leftMenu04_Arr as $k=>$v)
 				{
 					if(in_array($k,$modelPriv))
@@ -139,7 +139,7 @@
 						$leftMenu04_Str .= $v;
 					}
 				}
-				
+
 				foreach($leftMenu05_Arr as $k=>$v)
 				{
 					if(in_array($k,$modelPriv))
@@ -147,7 +147,7 @@
 						$leftMenu05_Str .= $v;
 					}
 				}
-				
+
 				foreach($leftMenu06_Arr as $k=>$v)
 				{
 					if(in_array($k,$modelPriv))
@@ -155,15 +155,15 @@
 						$leftMenu06_Str .= $v;
 					}
 				}
-	
-	
+
+
 				if($leftMenu01_Str != '')
 				{
 					echo '<div class="menubox"><div class="title on" id="t1" onclick="DisplayMenu(\'leftmenu01\');" title="点击切换显示或隐藏"> 网站系统管理 </div><div id="leftmenu01">';
 					echo $leftMenu01_Str;
 					echo '</div></div><div class="hr_5"></div>';
 				}
-				
+
 				if($leftMenu02_Str != '')
 				{
 					//如果01菜单为空，初始化02菜单
@@ -175,11 +175,11 @@
 					{
 						echo '<div class="menubox"><div class="title on" id="t1" onclick="DisplayMenu(\'leftmenu02\');" title="点击切换显示或隐藏"> 栏目内容管理 </div><div id="leftmenu02">';
 					}
-	
+
 					echo $leftMenu02_Str;
 					echo '</div></div><div class="hr_5"></div>';
 				}
-				
+
 				if($leftMenu03_Str != '')
 				{
 					//如果02菜单为空，初始化03菜单
@@ -192,11 +192,11 @@
 					{
 						echo '<div class="menubox"><div class="title on" id="t1" onclick="DisplayMenu(\'leftmenu03\');" title="点击切换显示或隐藏"> 模块扩展管理 </div><div id="leftmenu03">';
 					}
-	
+
 					echo $leftMenu03_Str;
 					echo '</div></div><div class="hr_5"></div>';
 				}
-				
+
 				if($leftMenu04_Str != '')
 				{
 					//如果03菜单为空，初始化04菜单
@@ -210,11 +210,11 @@
 					{
 						echo '<div class="menubox"><div class="title on" id="t1" onclick="DisplayMenu(\'leftmenu04\');" title="点击切换显示或隐藏"> 商品订单管理 </div><div id="leftmenu04">';
 					}
-	
+
 					echo $leftMenu04_Str;
 					echo '</div></div><div class="hr_5"></div>';
 				}
-				
+
 				if($leftMenu05_Str != '')
 				{
 					//如果04菜单为空，初始化05菜单
@@ -229,11 +229,11 @@
 					{
 						echo '<div class="menubox"><div class="title on" id="t1" onclick="DisplayMenu(\'leftmenu05\');" title="点击切换显示或隐藏"> 界面模板管理 </div><div id="leftmenu05">';
 					}
-	
+
 					echo $leftMenu05_Str;
 					echo '</div></div><div class="hr_5"></div>';
 				}
-				
+
 				if($leftMenu06_Str != '')
 				{
 					//如果05菜单为空，初始化06菜单
@@ -249,7 +249,7 @@
 					{
 						echo '<div class="menubox"><div class="title on" id="t1" onclick="DisplayMenu(\'leftmenu06\');" title="点击切换显示或隐藏">帮助与更新 </div><div id="leftmenu06">';
 					}
-	
+
 					echo $leftMenu06_Str;
 					echo '</div></div><div class="hr_5"></div>';
 				}
@@ -283,7 +283,7 @@
 	</div>
 </div>
 <div class="bGradient"></div>
-<div class="copyright"> © 2014 <a href="http://phpMyWind.com/" target="_blank">phpMyWind.com</a><br />
+<div class="copyright"> © 2015 <a href="http://phpMyWind.com/" target="_blank">phpMyWind.com</a><br />
 	All Rights Reserved. </div>
 <div class="tabMenu">
 	<a href="left_menu_user_name.php" title="切换到名称菜单" class="model"></a>
@@ -296,7 +296,7 @@ function GetModelPriv($m='')
 	$r = $dosql->GetOne("SELECT * FROM `#@__adminprivacy` WHERE `groupid`=$id AND `model`='$m'");
 	if(isset($r) && is_array($r))
 	{
-		return TRUE; 
+		return TRUE;
 	}
 }
 ?>

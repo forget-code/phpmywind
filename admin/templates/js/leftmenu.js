@@ -1,6 +1,6 @@
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-22 17:39:34
 person: Feng
 **************************
@@ -36,7 +36,7 @@ function DisplayMenu(id)
 
 	var t = $("#"+id);
 	t.toggle();
-	
+
 	if(t.css("display") == "block"){
 		t.prev().addClass("on");
 	}else{
@@ -53,7 +53,7 @@ function FirstLoad()
 {
 	if($(".overview").height() > $(window).height()-135)
 	{
-		if($.browser.msie){ 
+		if($.browser.msie){
 			$(".tGradient").show();
 			$(".bGradient").show();
 		}else{
@@ -65,7 +65,7 @@ function FirstLoad()
 	}
 	else
 	{
-		if($.browser.msie){ 
+		if($.browser.msie){
 			$(".tGradient").hide();
 			$(".bGradient").hide();
 		}else{

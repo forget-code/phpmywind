@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-30 17:39:07
 person: Feng
 **************************
@@ -52,7 +52,7 @@ if($action == 'add')
 			$dosql->ExecNoneQuery($sql);
 		}
 
-	
+
 		WriteConfig();
 		echo '<script type="text/javascript">window.top.location.reload();</script>';
 		exit();
@@ -96,8 +96,8 @@ else if($action == 'del')
 		{
 			$dosql->ExecNoneQuery("DELETE FROM `#@__$tbn` WHERE `siteid`=$id");
 		}
-		
-		
+
+
 		//设置登录站点
 		$r = $dosql->GetOne("SELECT `id`,`sitekey` FROM `#@__site` ORDER BY `id` ASC");
 		if(isset($r['id']))

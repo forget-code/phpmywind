@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-30 16:45:58
 person: Feng
 **************************
@@ -22,7 +22,7 @@ require_once(ADMIN_INC.'/action.class.php');
 if($action == 'add')
 {
 	$parentstr = $doaction->GetParentStr();
-	
+
 	$sql = "INSERT INTO `$tbname` (parentid, parentstr, classname, picurl, linkurl, orderid, checkinfo) VALUES ('$parentid', '$parentstr', '$classname', '$picurl', '$linkurl', '$orderid', '$checkinfo')";
 	if($dosql->ExecNoneQuery($sql))
 	{

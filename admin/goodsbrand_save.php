@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-30 16:27:34
 person: Feng
 **************************
@@ -37,8 +37,8 @@ if($action == 'add')
 else if($action == 'update')
 {
 	$parentstr = $doaction->GetParentStr();
-	
-	
+
+
 	//更新所有关联parentstr
 	if($parentid != $repid)
 	{

@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-30 23:44:41
 person: Feng
 **************************
@@ -27,7 +27,7 @@ define('IN_INSTALL', TRUE);
 
 
 //版权信息设置
-$cfg_copyright = '© 2014 PHPMYWIND.COM';
+$cfg_copyright = '© 2015 PHPMYWIND.COM';
 
 
 //提示已经安装
@@ -56,7 +56,7 @@ if(!empty($_GET['s']))
 //协议说明
 if($s == 0)
 {
-	require_once(INSTALL_PATH.'/templates/step_0.html'); 
+	require_once(INSTALL_PATH.'/templates/step_0.html');
 	exit();
 }
 
@@ -74,7 +74,7 @@ else if($s == 1)
 						  'mysql_connect');
 
 	require_once(INSTALL_PATH.'/templates/step_1.html');
-	
+
 	exit();
 }
 
@@ -234,7 +234,7 @@ else if($s == 3)
 				$baseurl = 'http://'.$_SERVER['HTTP_HOST'];
 			else
 				$baseurl = 'http://'.$_SERVER['SERVER_NAME'];
-				
+
 			$authkey = GetRandStr(16);
 
 
@@ -248,7 +248,7 @@ else if($s == 3)
 			INSERT INTO `#@__webconfig` VALUES('1','cfg_seotitle','SEO标题','0','string','','6');
 			INSERT INTO `#@__webconfig` VALUES('1','cfg_keyword','关键字设置','0','string','','7');
 			INSERT INTO `#@__webconfig` VALUES('1','cfg_description','网站描述','0','bstring','','8');
-			INSERT INTO `#@__webconfig` VALUES('1','cfg_copyright','版权信息','0','bstring','Copyright © 2010 - 2014 phpMyWind.com All Rights Reserved','9');
+			INSERT INTO `#@__webconfig` VALUES('1','cfg_copyright','版权信息','0','bstring','Copyright © 2010 - 2015 phpMyWind.com All Rights Reserved','9');
 			INSERT INTO `#@__webconfig` VALUES('1','cfg_hotline','客服热线','0','string','400-800-8888','10');
 			INSERT INTO `#@__webconfig` VALUES('1','cfg_icp','备案编号','0','string','','11');
 			INSERT INTO `#@__webconfig` VALUES('1','cfg_webswitch','启用站点','0','bool','Y','12');
@@ -301,7 +301,7 @@ else if($s == 3)
 			INSERT INTO `#@__webconfig` VALUES('1','cfg_qq_appid','QQ登录组件AppID','4','string','','94');
 			INSERT INTO `#@__webconfig` VALUES('1','cfg_qq_appkey','QQ登录组件AppKey','4','string','','95');
 			INSERT INTO `#@__webconfig` VALUES('1','cfg_weibo_appid','微博登录组件AppID','4','string','','96');
-			INSERT INTO `#@__webconfig` VALUES('1','cfg_weibo_appkey','微博登录组件AppKey','4','string','','97');";	
+			INSERT INTO `#@__webconfig` VALUES('1','cfg_weibo_appkey','微博登录组件AppKey','4','string','','97');";
 
 
 			//导入其他安装数据
@@ -338,7 +338,7 @@ else if($s == 3)
 			while($row = mysql_fetch_array($res))
 			{
 				//强制去掉 '
-				//强制去掉最后一位 / 
+				//强制去掉最后一位 /
 				$vartmp = str_replace("'",'',$row['varvalue']);
 
 				if(substr($vartmp, -1) == '\\')
@@ -381,14 +381,14 @@ else if($s == 3)
 					}
 					fclose($fp);
 				}
-	
+
 				echo '<script>$("#install").append("测试数据导入完成！");</script>';
 				ob_flush();
 				flush();
 
 			}
-			
-			
+
+
 			//结束缓存区
 			ob_end_flush();
 
@@ -403,7 +403,7 @@ else if($s == 3)
 			exit();
 		}
 	}
-	
+
 	exit();
 }
 

@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-30 17:11:51
 person: Feng
 **************************
@@ -26,7 +26,7 @@ if($action == 'save')
 	{
 		if($lnkicoadd == '')
 			$lnkicoadd = 'templates/images/lnkBg02.png';
-		
+
 		$dosql->ExecNoneQuery("INSERT INTO `$tbname` (lnkname, lnklink, lnkico, orderid) VALUES ('$lnknameadd', '$lnklinkadd', '$lnkicoadd', '$orderidadd')");
 	}
 

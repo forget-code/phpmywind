@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2012-10-22 16:08:34
 person: Adu
 **************************
@@ -27,35 +27,35 @@ class Inter_Error
      * 是否开启debug模式？若为true，将在在浏览器显示详细信息。否则将不显示。
      * 参数选择：默认为false，可选参数true或者false。
      * 参数类型：bool
-     * 
+     *
      * friendlyExceptionPage：
      * 系统遇到exception的时候抛出的友好网页文件完整路径
      * 参数选择：默认为空。本参数只有当debugMode为false时才有效
      * 请指定为网页文件的完整路径（但不需要是绝对路径）。若文件不存在或者为空，则不进行任何操作。
      * 存在时则采取require模式。所以请自行保证防止xss的攻击！
      * 参数类型：string
-     * 
+     *
      * logType：
      * 对错误进行包括错误追踪在内的详细记录（detail）、还是只需要简单记录（simple）【均使用PHP函数error_log进行记录】？
      * false将不进行任何记录。
      * 参数选择：默认为false。可选择'detail'或者'simple'或者布尔值false。
      * 不建议在生产环境进行详细记录（detail），否则在高访问量的情况下，日志的条目将非常混乱！
      * 参数类型：bool|string
-	 * 
+	 *
 	 * logDir：
      * 记录日志的文件夹（目录路径），结尾不要含有斜杠。
      * 参数选择： 默认为空。本参数只有当logType不为false时才有效；
      * 并且当为若为空、或者不是目录、或者目录不存在，则按照php.ini的设置进行错误记录处理。
      * 参数类型：string
-     * 
+     *
      * suffix：
      * 记录日志的文件后缀。
      * 参数类型：string
-     * 
+     *
      * variables：
      * 指定要检测和输出的变量名。
      * 参数类型：array
-     * 
+     *
 	 * @var array
 	 */
     public static $conf = array(
@@ -408,7 +408,7 @@ END;
         self::show_variables();
         }
     }
-    
+
     /**
      * 指定变量名检测和显示
      */
@@ -426,7 +426,7 @@ END;
             }
              $variables_content .= '</div>';
         }
-        
+
             //输出
             echo <<<END
 <style type="text/css">

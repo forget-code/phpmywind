@@ -1,7 +1,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-31 00:40:41
 person: Feng
 **************************
@@ -15,7 +15,7 @@ $(function(){
 	}).blur(function(){
 		$(this).attr("class","input");
 	});
-	
+
 	$("#dbhost").focus();
 })
 
@@ -82,7 +82,7 @@ function CheckForm()
 		$("#password").focus();
 		return false;
 	}
-	
+
 	if($("#repassword").val() == "")
 	{
         alert("请输入重复密码！");
@@ -102,7 +102,7 @@ function CheckForm()
         var dbhost = $("#dbhost").val();
 		var dbuser = $("#dbuser").val();
 		var dbpwd  = $("#dbpwd").val();
-	
+
 		$.ajax({
 			url      : 'index.php?s=15271'+'&dbhost='+dbhost+'&dbuser='+dbuser+'&dbpwd='+dbpwd,
 			type     : 'get',
@@ -142,7 +142,7 @@ function CheckPwd()
 		url        : 'index.php?s=15271'+'&dbhost='+dbhost+'&dbuser='+dbuser+'&dbpwd='+dbpwd,
 		type       : 'get',
 		dataType   : 'html',
-		success    : function(data){	
+		success    : function(data){
 			if(data == 'true'){
 				$('#cpwdTxt').html('<span class="correct">可用</span>');
 				$('#cpwd').val("true");

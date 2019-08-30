@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-6-17 22:44:56
 person: Feng
 **************************
@@ -110,7 +110,7 @@ if($a == 'login')
 				$sql = "SELECT * FROM `#@__member` WHERE `qqid`='".$_SESSION['app']['qq']['uid']."'";
 			else if(check_app_login('weibo'))
 				$sql = "SELECT * FROM `#@__member` WHERE `weiboid`='".$_SESSION['app']['weibo']['idstr']."'";
-			
+
 			$row = $dosql->GetOne($sql);
 
 			//合作账号没有绑定过
@@ -123,11 +123,11 @@ if($a == 'login')
 				setcookie('username',      AuthCode('guest'    ,'ENCODE'), $cookie_time);
 				setcookie('lastlogintime', AuthCode($logintime ,'ENCODE'), $cookie_time);
 				setcookie('lastloginip',   AuthCode($loginip   ,'ENCODE'), $cookie_time);
-				
+
 				header('location:?c=default');
 				exit();
 			}
-			
+
 			//已经绑定账号
 			else
 			{
@@ -149,35 +149,35 @@ if($a == 'login')
 					}
 
 					$cookie_time = time()+3600;
-		
+
 					setcookie('username',      AuthCode($row['username'] ,'ENCODE'), $cookie_time);
 					setcookie('lastlogintime', AuthCode($row['logintime'],'ENCODE'), $cookie_time);
 					setcookie('lastloginip',   AuthCode($row['loginip']  ,'ENCODE'), $cookie_time);
-		
-		
+
+
 					//每天登录增加10点经验
 					if(MyDate('d',time()) != MyDate('d',$row['logintime']))
 					{
 						$dosql->ExecNoneQuery("UPDATE `#@__member` SET `expval`='".($row['expval'] + 10)."' WHERE `username`='".$row['username']."'");
 					}
-					
+
 					$dosql->ExecNoneQuery("UPDATE `#@__member` SET `loginip`='$loginip',`logintime`='$logintime' WHERE `id`=".$row['id']);
-					
-		
+
+
 					header('location:?c=default');
 					exit();
 				}
 			}
 		}
-		
+
 		else
 		{
 			header('location:?c=login');
 			exit();
 		}
 	}
-	
-	
+
+
 	//注册用户登录
 	else
 	{
@@ -186,7 +186,7 @@ if($a == 'login')
 		$username = empty($username) ? '' : $username;
 		$password = empty($password) ? '' : md5(md5($password));
 		$validate = empty($validate) ? '' : strtolower($validate);
-	
+
 
 		//验证输入数据
 		if($username == '' or
@@ -196,12 +196,12 @@ if($a == 'login')
 			header('location:?c=login');
 			exit();
 		}
-		
-		
+
+
 		//删除所有已过时记录
 		$dosql->ExecNoneQuery("DELETE FROM `#@__failedlogin` WHERE (UNIX_TIMESTAMP(NOW())-time)/60>15");
-	
-	
+
+
 		//判断是否被暂时禁止登录
 		$r = $dosql->GetOne("SELECT * FROM `#@__failedlogin` WHERE username='$username'");
 		if(is_array($r))
@@ -213,8 +213,8 @@ if($a == 'login')
 				exit();
 			}
 		}
-	
-	
+
+
 		//检测数据正确性
 		if($validate != strtolower(GetCkVdValue()))
 		{
@@ -224,21 +224,21 @@ if($a == 'login')
 		}
 		else
 		{
-	
+
 			$row = $dosql->GetOne("SELECT `id`,`password`,`logintime`,`loginip`,`expval` FROM `#@__member` WHERE `username`='$username'");
-	
-	
+
+
 			//密码错误
 			if(!is_array($row) or $password!=$row['password'])
 			{
 				$logintime = time();
 				$loginip   = GetIP();
-	
+
 				$r = $dosql->GetOne("SELECT * FROM `#@__failedlogin` WHERE `username`='$username'");
 				if(is_array($r))
 				{
 					$num = $r['num']-1;
-	
+
 					if($num == 0)
 					{
 						$dosql->ExecNoneQuery("UPDATE `#@__failedlogin` SET `time`=$logintime, `num`=$num WHERE `username`='$username'");
@@ -259,51 +259,51 @@ if($a == 'login')
 					exit();
 				}
 			}
-	
-	
+
+
 			//密码正确，查看是否被禁止登录
 			else if($row['expval'] <= 0)
 			{
 				ShowMsg('抱歉，您的账号被禁止登录！','?c=login');
 				exit();
 			}
-	
-	
+
+
 			//用户名密码正确
 			else
 			{
-	
+
 				$logintime = time();
 				$loginip = GetIP();
-				
-				
+
+
 				//删除禁止登录
 				if(is_array($r))
 				{
 					$dosql->ExecNoneQuery("DELETE FROM `#@__failedlogin` WHERE `username`='$username'");
 				}
-	
-	
+
+
 				//是否自动登录
 				if(isset($autologin))
 					$cookie_time = time()+14*24*60*60;
 				else
 					$cookie_time = time()+3600;
-	
+
 				setcookie('username',      AuthCode($username        ,'ENCODE'), $cookie_time);
 				setcookie('lastlogintime', AuthCode($row['logintime'],'ENCODE'), $cookie_time);
 				setcookie('lastloginip',   AuthCode($row['loginip']  ,'ENCODE'), $cookie_time);
-	
-	
+
+
 				//每天登录增加10点经验
 				if(MyDate('d',time()) != MyDate('d',$row['logintime']))
 				{
 					$dosql->ExecNoneQuery("UPDATE `#@__member` SET `expval`='".($row['expval'] + 10)."' WHERE `username`='$username'");
 				}
-				
+
 				$dosql->ExecNoneQuery("UPDATE `#@__member` SET `loginip`='$loginip',`logintime`='$logintime' WHERE `id`=".$row['id']);
-				
-	
+
+
 				header('location:?c=default');
 				exit();
 			}
@@ -315,7 +315,7 @@ if($a == 'login')
 //注册账户
 else if($a == 'reg')
 {
-	
+
 	//初始化参数
 	$username   = empty($username)   ? '' : $username;
 	$password   = empty($password)   ? '' : md5(md5($password));
@@ -385,7 +385,7 @@ else if($a == 'reg')
 	$regtime  = time();
 	$regip    = GetIP();
 
-	$sql = "INSERT INTO `#@__member` (username, password, email, expval, regtime, regip, logintime, loginip) VALUES ('$username', '$password', '$email', '10', '$regtime', '$regip', '$regtime', '$regip')";	
+	$sql = "INSERT INTO `#@__member` (username, password, email, expval, regtime, regip, logintime, loginip) VALUES ('$username', '$password', '$email', '10', '$regtime', '$regip', '$regtime', '$regip')";
 	if($dosql->ExecNoneQuery($sql))
 	{
 		header('location:?c=login&d='.md5('reg'));
@@ -481,7 +481,7 @@ else if($a == 'setnewpwd')
 
 	if(isset($_SESSION['fid_'.$_POST['uname']]))
 	{
-		
+
 		if($_SESSION['fid_'.$_POST['uname']] != $_POST['uname'])
 		{
 			ShowMsg('非法操作，找回用户名与上一步输入不符合！','?c=findpwd');
@@ -544,7 +544,7 @@ else if($a == 'mailfind')
 	$r = $dosql->GetOne("SELECT `email` FROM `#@__member` WHERE `username`='$uname'");
 	if($r['email'] == $email)
 	{
-		
+
 	}
 	else
 	{
@@ -557,7 +557,7 @@ else if($a == 'mailfind')
 //更新资料
 else if($a == 'saveedit')
 {
-	
+
 	//检测数据完整性
 	if($password!=$repassword or $email=='')
 	{
@@ -631,7 +631,7 @@ else if($a == 'getarea')
 		$sql .= "`datagroup`='$datagroup' AND `datavalue`>'$v' AND `datavalue`<'".($v + 500)."'";
 	else
 		$sql .= "`datavalue` LIKE '$v.%%%' AND `datagroup`='$datagroup'";
-	
+
 	$sql .= " ORDER BY orderid ASC, datavalue ASC";
 
 	$dosql->Execute($sql);
@@ -639,8 +639,8 @@ else if($a == 'getarea')
 	{
 		$str .= '<option value="'.$row['datavalue'].'">'.$row['dataname'].'</option>';
 	}
-	
-	if($str == '') $str .= '<option value="-1">--</option>'; 
+
+	if($str == '') $str .= '<option value="-1">--</option>';
 	echo $str;
 	exit();
 }
@@ -665,7 +665,7 @@ else if($a == 'savecomment')
 	}
 
 	$reply = '';
-	
+
 	if(empty($c_uname))
 	{
 		$uid   = '-1';
@@ -920,14 +920,14 @@ else if($a == 'perfect')
 	$regtime  = time();
 	$regip    = GetIP();
 
-	
+
 	if(check_app_login('qq'))
 	{
 		$r = $dosql->GetOne("SELECT `id` FROM `#@__member` WHERE `qqid`='".$_SESSION['app']['qq']['uid']."'");
 		if(isset($r['id']))
 			ShowMsg('该QQ已与其他账号绑定！','-1');
 		else
-			$sql = "INSERT INTO `#@__member` (username, password, email, expval, regtime, regip, logintime, loginip, qqid) VALUES ('$username', '$password', '$email', '10', '$regtime', '$regip', '$regtime', '$regip', '".$_SESSION['app']['qq']['uid']."')";	
+			$sql = "INSERT INTO `#@__member` (username, password, email, expval, regtime, regip, logintime, loginip, qqid) VALUES ('$username', '$password', '$email', '10', '$regtime', '$regip', '$regtime', '$regip', '".$_SESSION['app']['qq']['uid']."')";
 	}
 
 	else if(check_app_login('weibo'))
@@ -936,9 +936,9 @@ else if($a == 'perfect')
 		if(isset($r['id']))
 			ShowMsg('该微博已与其他账号绑定！','-1');
 		else
-			$sql = "INSERT INTO `#@__member` (username, password, email, expval, regtime, regip, logintime, loginip, weiboid) VALUES ('$username', '$password', '$email', '10', '$regtime', '$regip', '$regtime', '$regip', '".$_SESSION['app']['weibo']['idstr']."')";	
+			$sql = "INSERT INTO `#@__member` (username, password, email, expval, regtime, regip, logintime, loginip, weiboid) VALUES ('$username', '$password', '$email', '10', '$regtime', '$regip', '$regtime', '$regip', '".$_SESSION['app']['weibo']['idstr']."')";
 	}
-	
+
 	$dosql->ExecNoneQuery($sql);
 
 
@@ -950,7 +950,7 @@ else if($a == 'perfect')
 
 	ShowMsg('完善账号成功！','?c=default');
 	exit();
-	
+
 }
 
 
@@ -1018,7 +1018,7 @@ else if($a == 'binding')
 		ShowMsg('绑定账号成功！','?c=default');
 		exit();
 	}
-	
+
 }
 
 
@@ -1088,7 +1088,7 @@ if($c == 'login')
 }
 
 if($c=='default'  or $c=='edit'   or $c=='comment' or
-   $c=='favorite' or $c=='order'  or $c=='ordershow' or 
+   $c=='favorite' or $c=='order'  or $c=='ordershow' or
    $c=='msg'      or $c=='avatar' or $c=='perfect' or
    $c=='binding')
 {
@@ -1129,14 +1129,14 @@ if($c == 'default')
 		require_once(PHPMYWIND_TEMP.'/default/member/default.php');
 	else
 		require_once(PHPMYWIND_TEMP.'/default/member/defaultguest.php');
-	
+
 	exit();
 }
 
 
 //上传头像
 else if($c == 'avatar')
-{		
+{
 	require_once(PHPMYWIND_TEMP.'/default/member/avatar.php');
 	exit();
 }
@@ -1144,7 +1144,7 @@ else if($c == 'avatar')
 
 //编辑资料
 else if($c == 'edit')
-{		
+{
 	require_once(PHPMYWIND_TEMP.'/default/member/edit.php');
 	exit();
 }
@@ -1152,7 +1152,7 @@ else if($c == 'edit')
 
 //评论列表
 else if($c == 'comment')
-{	
+{
 	require_once(PHPMYWIND_TEMP.'/default/member/comment.php');
 	exit();
 }

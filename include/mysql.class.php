@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-31 21:57:54
 person: Feng
 **************************
@@ -11,7 +11,7 @@ person: Feng
 
 /*
  * 数据库类
- * 
+ *
  * 调用这个类前,请先设定这些外部变量
  * $GLOBALS['db_host'];
  * $GLOBALS['db_user'];
@@ -105,7 +105,7 @@ class MySql
 			}
 
             $i = 0;
-            while(!$this->linkid) 
+            while(!$this->linkid)
             {
                 if($i > 100) break;
 
@@ -137,7 +137,7 @@ class MySql
         $db_info = explode('.',$this->GetVersion());
         $db_info = $db_info[0].'.'.$db_info[1];
 
-        if($db_info > '4.1' && $GLOBALS['db_charset']) 
+        if($db_info > '4.1' && $GLOBALS['db_charset'])
         {
             mysql_query("SET NAMES '".$GLOBALS['db_charset']."', character_set_client=binary, interactive_timeout=3600;", $this->linkid);
         }
@@ -164,8 +164,8 @@ class MySql
 	{
 		$this->Execute($sql,$id);
 	}
-	
-	
+
+
 	//执行一个不返回结果的SQL语句，如update,delete,insert等
 	function QueryNone($sql='')
 	{
@@ -417,7 +417,7 @@ class MySql
         //return $row["lid"];
         return mysql_insert_id($this->linkid);
     }
-	
+
 
 	//释放记录集占用的资源
     function FreeResult($id='me')

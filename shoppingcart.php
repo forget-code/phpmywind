@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2013-1-14 13:23:24
 person: Feng
 **************************
@@ -60,7 +60,7 @@ if($a == 'addshopingcart')
 		//过滤参数
 		$goodsid = intval($goodsid);
 		$buynum  = intval($buynum);
-		
+
 		$shoppingcart[] = array($goodsid, $buynum, $goodsattr);
 	}
 
@@ -115,13 +115,13 @@ else if($a == 'empty')
 <body>
 <!-- header-->
 <?php require_once('header.php'); ?>
-<!-- /header--> 
+<!-- /header-->
 <!-- banner-->
 <div class="subBanner"> <img src="templates/default/images/banner-ir.png" /> </div>
-<!-- /banner--> 
+<!-- /banner-->
 <!-- notice-->
 <div class="subnotice"><strong>网站公告：</strong> <?php echo Info(1); ?> </div>
-<!-- /notice--> 
+<!-- /notice-->
 <!-- mainbody-->
 <div class="subBody">
 	<div class="subTitle" style="margin:0;"> <span class="catname shopcart">商品购物车</span> <a href="shoppingcart.php?a=empty"><strong>清空购物车</strong></a>
@@ -163,7 +163,7 @@ else if($a == 'empty')
 			$totalprice += $r['salesprice'] * $goods[1];
 
 			//输出商品名称
-			echo '<a href="goodsshow.php?cid='.$r['classid'].'&tid='.$r['typeid'].'&id='.$r['id'].'" class="title" target="_blank">'.$r['title'].'</a>'; 
+			echo '<a href="goodsshow.php?cid='.$r['classid'].'&tid='.$r['typeid'].'&id='.$r['id'].'" class="title" target="_blank">'.$r['title'].'</a>';
 
 			//输出选中属性
 			foreach($goods[2] as $v)
@@ -191,7 +191,7 @@ else if($a == 'empty')
 	}
 	?>
 </div>
-<!-- /mainbody--> 
+<!-- /mainbody-->
 <!-- footer-->
 <?php require_once('footer.php'); ?>
 <!-- /footer-->

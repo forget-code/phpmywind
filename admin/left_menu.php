@@ -22,7 +22,7 @@
 		</div>
 	</div>
 	<div class="viewport">
-		<div class="overview"> 
+		<div class="overview">
 			<!--scrollbar start-->
 			<div class="menubox">
 				<div class="title on" id="t1" onclick="DisplayMenu('leftmenu01');" title="点击切换显示或隐藏"> 网站系统管理 </div>
@@ -60,7 +60,7 @@
 				<div class="title" onclick="DisplayMenu('leftmenu05');" title="点击切换显示或隐藏"> 界面模板管理 </div>
 				<div id="leftmenu05" style="display:none;"> <a href="nav.php" target="main">导航菜单设置</a> <a href="diymenu.php" target="main">自定义菜单项</a>
 					<div class="hr_1"> </div>
-					<a href="mobile.php" target="main">手机网站设置</a> <a href="editfile.php" target="main">默认模板管理</a> 
+					<a href="mobile.php" target="main">手机网站设置</a> <a href="editfile.php" target="main">默认模板管理</a>
 				</div>
 			</div>
 			<div class="hr_5"></div>
@@ -70,13 +70,13 @@
 					<div class="hr_1"> </div>
 					<a href="upload_file.php" target="main">上传新文件</a> <a href="check_bom.php" target="main">BOM检查</a> <a href="help.php" target="main">开发帮助</a> </div>
 			</div>
-			<!--scrollbar end--> 
+			<!--scrollbar end-->
 		</div>
 	</div>
 </div>
 <div class="bGradient"></div>
 
-<div class="copyright"> © 2014 <a href="http://phpMyWind.com/" target="_blank">phpMyWind.com</a><br />
+<div class="copyright"> © 2015 <a href="http://phpMyWind.com/" target="_blank">phpMyWind.com</a><br />
 	All Rights Reserved. </div>
 </body>
 </html>

@@ -1,7 +1,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2012-10-16 14:31:32
 person: Feng
 **************************
@@ -14,7 +14,7 @@ $(function(){
 	}).blur(function(){
 		$(this).attr("class","input");
 	});
-	
+
 	$(".sub").mouseover(function(){
 		$(this).attr("class","subon");
 	}).mouseout(function(){
@@ -22,22 +22,22 @@ $(function(){
 	}).mousedown(function(){
 		$(this).attr("class","subdown");
 	});
-	
+
 	$("#username").focus();
-	
-	
+
+
 	$(".class_input").focus(function(){
 		$(this).attr("class","class_input_on");
 	}).blur(function(){
 		$(this).attr("class","class_input");
 	});
-	
+
 	$(".class_areatext").focus(function(){
 		$(this).attr("class","class_areatext_on");
 	}).blur(function(){
 		$(this).attr("class","class_areatext");
 	});
-	
+
 });
 
 function CheckReg()
@@ -61,7 +61,7 @@ function CheckReg()
 		$("#username").focus();
 		return false;
 	}
-	
+
 
 
 	var ckupwd = /^[0-9a-zA-Z_-]+$/;
@@ -98,7 +98,7 @@ function CheckReg()
 		return false;
 	}
 
-	
+
 
 	var ckmail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 	if($("#email").val() == "")
@@ -139,7 +139,7 @@ function CheckLog()
 		$("#password").focus();
 		return false;
 	}
-	
+
 	if($("#validate").val() == "")
 	{
 		alert("请输入验证码！");
@@ -156,7 +156,7 @@ function CheckFind()
 		$("#username").focus();
 		return false;
 	}
-	
+
 	if($("#validate").val() == "")
 	{
 		alert("请输入验证码！");
@@ -452,7 +452,7 @@ function cfm_perfect()
 		$("#username").focus();
 		return false;
 	}
-	
+
 
 
 	var ckupwd = /^[0-9a-zA-Z_-]+$/;
@@ -489,7 +489,7 @@ function cfm_perfect()
 		return false;
 	}
 
-	
+
 
 	var ckmail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 	if($("#email").val() == "")

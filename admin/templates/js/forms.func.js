@@ -1,7 +1,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-29 00:12:36
 person: Feng
 **************************
@@ -9,14 +9,14 @@ person: Feng
 
 
 $(function(){
-	
+
 	$(".dataTr").mouseover(function(){
 		$(this).attr("class","dataTrOn");
 	}).mouseout(function(){
 		$(this).attr("class","dataTr");
 	});
-	
-	
+
+
 	$(".alltype").mouseover(function(){
 		$(this).find(".btn").addClass("on");
 		$(this).find(".drop").show();
@@ -25,7 +25,7 @@ $(function(){
 		$(this).find(".drop").hide();
 	});
 
-	
+
 	QuickToolBar();
 
 
@@ -154,7 +154,7 @@ function DisplayRows(id)
 	{
 		rowpid.slideUp(200);
 		rowid.attr("class","plusSign");
-		
+
 		//判断快捷操作栏
 		setTimeout("QuickToolBar()",200);
 	}
@@ -162,11 +162,11 @@ function DisplayRows(id)
 	{
 		rowpid.slideDown(200);
 		rowid.attr("class","minusSign");
-		
+
 		//判断快捷操作栏
 		setTimeout("QuickToolBar()",200);
 	}
-	
+
 }
 
 
@@ -176,7 +176,7 @@ function ShowAllRows()
 {
 	$("div[rel^='rowpid'][rel!='rowpid_0']").slideDown(200);
 	$("span[id^='rowid']").attr("class","minusSign");
-	
+
 	//判断快捷操作栏
 	setTimeout("QuickToolBar()",200);
 }
@@ -188,7 +188,7 @@ function HideAllRows()
 {
 	$("div[rel^='rowpid'][rel!='rowpid_0']").slideUp(200, QuickToolBar());
 	$("span[id^='rowid']").attr("class","plusSign");
-	
+
 	//判断快捷操作栏
 	setTimeout("QuickToolBar()",200);
 }

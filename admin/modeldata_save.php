@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-1-30 13:50:21
 person: Feng
 **************************
@@ -52,16 +52,16 @@ if($action == 'add')
 		$r = $dosql->GetOne("SELECT `parentstr` FROM `#@__infoclass` WHERE `id`=$parentid");
 		$parentstr = $r['parentstr'].$parentid.',';
 	}
-	
-	
+
+
 	//保存远程缩略图
 	if($rempic=='true' &&
 	   preg_match("#^http:\/\/#i", $picurl))
 	{
 		$picurl = GetRemPic($picurl);
 	}
-	
-	
+
+
 	//自动缩略图处理
 	$r = $dosql->GetOne("SELECT `picwidth`,`picheight` FROM `#@__infoclass` WHERE `id`=$classid");
 	if(!empty($r['picwidth']) &&
@@ -78,7 +78,7 @@ if($action == 'add')
 	$fieldname  = '';
 	$fieldvalue = '';
 	$fieldstr   = '';
-	
+
 	$ids = GetDiyFieldCatePriv($modelid,$classid);
 	if(!empty($ids))
 	{
@@ -113,36 +113,36 @@ if($action == 'add')
 					exit();
 				}
 			}
-	
+
 			if($row['fieldtype'] == 'datetime')
 			{
 				$v = GetMkTime($v);
 			}
-			
+
 			if($row['fieldtype'] == 'fileall')
 			{
 				$vTxt = isset($_POST[$row['fieldname'].'_txt']) ? $_POST[$row['fieldname'].'_txt'] : '';
-	
+
 				if(is_array($v) &&
 				   is_array($vTxt))
 				{
 					$vNum = count($v);
 					$vTmp = '';
-			
+
 					for($i=0;$i<$vNum;$i++)
 					{
 						$vTmp[] = $v[$i].','.addslashes($vTxt[$i]);
 					}
-					
+
 					$v = serialize($vTmp);
 				}
 			}
-			
+
 			if($row['fieldtype'] == 'checkbox')
 			{
 				@$v = implode(',',$v);
 			}
-	
+
 			$fieldname  .= ", $k";
 			$fieldvalue .= ", '$v'";
 			$fieldstr   .= ", $k='$v'";
@@ -198,8 +198,8 @@ else if($action == 'update')
 	{
 		$picurl = GetRemPic($picurl);
 	}
-	
-	
+
+
 	//自动缩略图处理
 	$r = $dosql->GetOne("SELECT `picwidth`,`picheight` FROM `#@__infoclass` WHERE `id`=$classid");
 	if(!empty($r['picwidth']) &&
@@ -251,36 +251,36 @@ else if($action == 'update')
 					exit();
 				}
 			}
-	
+
 			if($row['fieldtype'] == 'datetime')
 			{
 				$v = GetMkTime($v);
 			}
-			
+
 			if($row['fieldtype'] == 'fileall')
 			{
 				$vTxt = isset($_POST[$row['fieldname'].'_txt']) ? $_POST[$row['fieldname'].'_txt'] : '';
-	
+
 				if(is_array($v) &&
 				   is_array($vTxt))
 				{
 					$vNum = count($v);
 					$vTmp = '';
-			
+
 					for($i=0;$i<$vNum;$i++)
 					{
 						$vTmp[] = $v[$i].','.addslashes($vTxt[$i]);
 					}
-					
+
 					$v = serialize($vTmp);
 				}
 			}
-			
+
 			if($row['fieldtype'] == 'checkbox')
 			{
 				@$v = implode(',',$v);
 			}
-	
+
 			$fieldname  .= ", $k";
 			$fieldvalue .= ", '$v'";
 			$fieldstr   .= ", $k='$v'";

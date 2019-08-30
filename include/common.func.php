@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-31 21:57:40
 person: Feng
 **************************
@@ -25,25 +25,25 @@ if(!function_exists('ReStrLen'))
 		$restr = '';
 		$i = 0;
 		$n = 0.0;
-	
+
 		//字符串的字节数
 		$strlen = strlen($str);
 		while(($n < $len) and ($i < $strlen))
 		{
 		   $temp_str = substr($str, $i, 1);
-	
+
 		   //得到字符串中第$i位字符的ASCII码
 		   $ascnum = ord($temp_str);
-	
+
 		   //如果ASCII位高与252
-		   if($ascnum >= 252) 
+		   if($ascnum >= 252)
 		   {
 				//根据UTF-8编码规范，将6个连续的字符计为单个字符
-				$restr = $restr.substr($str, $i, 6); 
+				$restr = $restr.substr($str, $i, 6);
 				//实际Byte计为6
-				$i = $i + 6; 
+				$i = $i + 6;
 				//字串长度计1
-				$n++; 
+				$n++;
 		   }
 		   else if($ascnum >= 248)
 		   {
@@ -69,17 +69,17 @@ if(!function_exists('ReStrLen'))
 				$i = $i + 2;
 				$n++;
 		   }
-	
+
 		   //如果是大写字母 I除外
 		   else if($ascnum>=65 and $ascnum<=90 and $ascnum!=73)
 		   {
 				$restr = $restr.substr($str, $i, 1);
 				//实际的Byte数仍计1个
-				$i = $i + 1; 
+				$i = $i + 1;
 				//但考虑整体美观，大写字母计成一个高位字符
-				$n++; 
+				$n++;
 		   }
-	
+
 		   //%,&,@,m,w 字符按1个字符宽
 		   else if(!(array_search($ascnum, array(37, 38, 64, 109 ,119)) === FALSE))
 		   {
@@ -87,26 +87,26 @@ if(!function_exists('ReStrLen'))
 				//实际的Byte数仍计1个
 				$i = $i + 1;
 				//但考虑整体美观，这些字条计成一个高位字符
-				$n++; 
+				$n++;
 		   }
-	
+
 		   //其他情况下，包括小写字母和半角标点符号
 		   else
 		   {
 				$restr = $restr.substr($str, $i, 1);
 				//实际的Byte数计1个
-				$i = $i + 1; 
+				$i = $i + 1;
 				//其余的小写字母和半角标点等与半个高位字符宽
-				$n = $n + 0.5; 
+				$n = $n + 0.5;
 		   }
 		}
-	
+
 		//超过长度时在尾处加上省略号
 		if($i < $strlen)
 		{
 		   $restr = $restr.$etc;
 		}
-	
+
 		return $restr;
 	}
 }
@@ -139,7 +139,7 @@ if(!function_exists('GetIP'))
 	{
 		static $ip = NULL;
 		if($ip !== NULL) return $ip;
-	
+
 		if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
 		{
 			$arr = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
@@ -155,7 +155,7 @@ if(!function_exists('GetIP'))
 		{
 			$ip = $_SERVER['REMOTE_ADDR'];
 		}
-	
+
 		//IP地址合法验证
 		$ip = (false !== ip2long($ip)) ? $ip : '0.0.0.0';
 		return $ip;
@@ -172,7 +172,7 @@ if(!function_exists('GetRealSize'))
 		$mb = 1024 * $kb;    // Megabyte
 		$gb = 1024 * $mb;    // Gigabyte
 		$tb = 1024 * $gb;    // Terabyte
-	
+
 		if($size < $kb)
 			return $size.'B';
 
@@ -198,7 +198,7 @@ if(!function_exists('GetDirSize'))
 	{
 		$handle = opendir($dir);
 		$fsize  = '';
-	
+
 		while(($fname = readdir($handle)) !== false)
 		{
 			if($fname != '.' && $fname != '..')
@@ -209,10 +209,10 @@ if(!function_exists('GetDirSize'))
 					$fsize += filesize("$dir/$fname");
 			}
 		}
-	
+
 		closedir($handle);
 		if(empty($fsize)) $fsize = 0;
-	
+
 		return $fsize;
 	}
 }
@@ -305,8 +305,8 @@ if(!function_exists('GetMkTime'))
 if(!function_exists('MkDirs'))
 {
 	function MkDirs($dir)
-	{ 
-		return is_dir($dir) or (MkDirs(dirname($dir)) and mkdir($dir, 0777)); 
+	{
+		return is_dir($dir) or (MkDirs(dirname($dir)) and mkdir($dir, 0777));
 	}
 }
 
@@ -318,7 +318,7 @@ if(!function_exists('ShowMsg'))
 	{
 		if($gourl == '-1')
 			echo '<script>alert("'.$msg.'");history.go(-1);</script>';
-			
+
 		else if($gourl == '0')
 			echo '<script>alert("'.$msg.'");location.reload();</script>';
 
@@ -342,7 +342,7 @@ if(!function_exists('Readf'))
 			else
 			{
 				$str = '';
-	
+
 				$fp = fopen($file, 'r');
 				while(!feof($fp))
 				{
@@ -398,7 +398,7 @@ if(!function_exists('IsHttpUrl'))
 		{
 			$url = 'http://'.$url;
 		}
-	
+
 		return $url;
 	}
 }
@@ -446,7 +446,7 @@ if(!function_exists('GetRandStr'))
 		//'!@#$%^&*()-_ []{}<>~`+=,.;:/?|';
 		$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 		$random_str = '';
-	
+
 		for($i=0; $i<$length; $i++)
 		{
 			//这里提供两种字符获取方式
@@ -455,7 +455,7 @@ if(!function_exists('GetRandStr'))
 			//$password .= substr($chars, mt_rand(0, strlen($chars) - 1), 1);
 			$random_str .= $chars[mt_rand(0, strlen($chars) - 1)];
 		}
-	
+
 		return $random_str;
 	}
 }
@@ -493,13 +493,13 @@ if(!function_exists('AuthCode'))
 		$result = '';
 		$box = range(0, 255);
 		$rndkey = array();
-	
+
 		// 产生密匙簿
 		for($i = 0; $i <= 255; $i++)
 		{
 			$rndkey[$i] = ord($cryptkey[$i % $key_length]);
 		}
-	
+
 		// 用固定的算法，打乱密匙簿，增加随机性，好像很复杂，实际上并不会增加密文的强度
 		for($j = $i = 0; $i < 256; $i++)
 		{
@@ -509,7 +509,7 @@ if(!function_exists('AuthCode'))
 			$box[$i] = $box[$j];
 			$box[$j] = $tmp;
 		}
-	
+
 		// 核心加解密部分
 		for($a = $j = $i = 0; $i < $string_length; $i++)
 		{
@@ -522,7 +522,7 @@ if(!function_exists('AuthCode'))
 			// 从密匙簿得出密匙进行异或，再转成字符，加密和解决时($box[($box[$a] + $box[$j]) % 256])的值是不变的。
 			$result .= chr(ord($string[$i]) ^ ($box[($box[$a] + $box[$j]) % 256]));
 		}
-	
+
 		if($operation == 'DECODE')
 		{
 			// substr($result, 0, 10) == 0 验证数据有效性
@@ -567,30 +567,30 @@ if(!function_exists('isMobile'))
 {
 	function IsMobile()
 	{
-	
+
 		//如果有HTTP_X_WAP_PROFILE则一定是移动设备
 		if(isset($_SERVER['HTTP_X_WAP_PROFILE']))  return TRUE;
-	
+
 		//如果via信息含有wap则一定是移动设备,部分服务商会屏蔽该信息
 		if(isset($_SERVER['HTTP_VIA']))
 		{
 			//找不到为flase,否则为true
 			return stristr($_SERVER['HTTP_VIA'], "wap") ? true : false;
 		}
-	
+
 		//判断手机发送的客户端标志,兼容性有待提高
 		if(isset($_SERVER['HTTP_USER_AGENT']))
 		{
-	
+
 			$clientkeywords = array('nokia','sony','ericsson','mot','samsung','htc','sgh','lg','sharp','sie-','philips','panasonic','alcatel','lenovo','iphone','ipod','blackberry','meizu','android','netfront','symbian','ucweb','windowsce','palm','operamini','operamobi','openwave','nexusone','cldc','midp','wap','mobile');
-	
+
 			//从HTTP_USER_AGENT中查找手机浏览器的关键字
 			if(preg_match('/('.implode('|', $clientkeywords).')/i', strtolower($_SERVER['HTTP_USER_AGENT'])))
 			{
 				return TRUE;
 			}
 		}
-	
+
 		//协议法，因为有可能不准确，放到最后判断
 		if(isset($_SERVER['HTTP_ACCEPT']))
 		{
@@ -603,7 +603,7 @@ if(!function_exists('isMobile'))
 					return TRUE;
 			}
 		}
-	
+
 		return FALSE;
 	}
 }

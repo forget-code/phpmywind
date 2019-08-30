@@ -28,7 +28,7 @@ function CheckForm()
         $("#answer").focus();
         return false;
     }
-	
+
 	$("form").submit();
 }
 
@@ -40,11 +40,11 @@ $(function(){
 			$(this).prev().show();
 		}
 	});
-	
+
 	$(".loginBtn").click(function(){
 		CheckForm();
 	});
-	
+
 	$("#username").focus();
 })
 </script>
@@ -83,7 +83,7 @@ $(function(){
 			<input type="hidden" name="dopost" value="login" />
 		</form>
 	</div>
-	<div class="loginCopyright">© 2014 phpMyWind.com</div>
+	<div class="loginCopyright">© 2015 phpMyWind.com</div>
 </div>
 </body>
 </html>

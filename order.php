@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2013-1-14 13:23:24
 person: Feng
 **************************
@@ -48,7 +48,7 @@ if($action == 'getarea')
 		$sql .= "datagroup='$datagroup' AND datavalue>'$v' AND datavalue<'".($v + 500)."'";
 	else
 		$sql .= "datavalue LIKE '$v.%%%' AND datagroup='$datagroup'";
-	
+
 	$sql .= " ORDER BY orderid ASC, datavalue ASC";
 
 
@@ -57,8 +57,8 @@ if($action == 'getarea')
 	{
 		$str .= '<option value="'.$row['datavalue'].'">'.$row['dataname'].'</option>';
 	}
-	
-	if($str == '') $str .= '<option value="-1">--</option>'; 
+
+	if($str == '') $str .= '<option value="-1">--</option>';
 	echo $str;
 	exit();
 }
@@ -67,7 +67,7 @@ if($action == 'getarea')
 //保存订单
 if($action == 'save')
 {
-	
+
 	//检测数据完整性
 	if($username         == '' or
 	   $truename         == '' or
@@ -95,7 +95,7 @@ if($action == 'save')
 	$address   = htmlspecialchars($address);
 	$buyremark = htmlspecialchars($buyremark);
 	$posttime  = time();
-	
+
 	$postarea_prov    = empty($postarea_prov)    ? '-1' : $postarea_prov;
 	$postarea_city    = empty($postarea_city)    ? '-1' : $postarea_city;
 	$postarea_country = empty($postarea_country) ? '-1' : $postarea_country;
@@ -132,17 +132,17 @@ if($action == 'save')
 <script type="text/javascript">
 $(function(){
 	$("input").focus(function(){
-		$(this).attr("class", "class_input_on"); 
+		$(this).attr("class", "class_input_on");
 	}).blur(function(){
-		$(this).attr("class", "class_input"); 
+		$(this).attr("class", "class_input");
 	});
-	
+
 	$("textarea").focus(function(){
-		$(this).attr("class", "class_areatext_on"); 
+		$(this).attr("class", "class_areatext_on");
 	}).blur(function(){
-		$(this).attr("class", "class_areatext"); 
+		$(this).attr("class", "class_areatext");
 	});
-	
+
 	$("#truename").focus();
 })
 
@@ -192,7 +192,7 @@ function CheckOrder()
 		$("#idcard").focus();
 		return false;
 	}
-	
+
 	if($("#postmode").val() == "-1")
 	{
 		alert("请选择配送方式！");
@@ -220,13 +220,13 @@ function CheckOrder()
 <body>
 <!-- header-->
 <?php require_once('header.php'); ?>
-<!-- /header--> 
+<!-- /header-->
 <!-- banner-->
 <div class="subBanner"> <img src="templates/default/images/banner-ir.png" /> </div>
-<!-- /banner--> 
+<!-- /banner-->
 <!-- notice-->
 <div class="subnotice"><strong>网站公告：</strong> <?php echo Info(1); ?> </div>
-<!-- /notice--> 
+<!-- /notice-->
 <!-- mainbody-->
 <div class="subBody">
 	<div class="subTitle" style="margin:0;"> <span class="catname shopcart">商品订单</span>
@@ -322,7 +322,7 @@ function CheckOrder()
 			{
 				//获取数据库中商品信息
 				$r = $dosql->GetOne("SELECT * FROM `#@__goods` WHERE `id`=".intval($goods[0]));
-	
+
 				//计算订单总价
 				$totalprice += $r['salesprice']*$goods[1];
 
@@ -337,7 +337,7 @@ function CheckOrder()
 	<input type="hidden" name="amount" id="amount" value="<?php echo $totalprice; ?>" />
 	<input type="hidden" name="weight" id="weight" value="<?php echo $totalweight; ?>" />
 	<input type="hidden" name="action" id="action" value="save" />
-	
+
 </form>
 </div>
 <?php
@@ -395,7 +395,7 @@ function GetOrderID($tbname)
 	return $orderid;
 }
 ?>
-<!-- /mainbody--> 
+<!-- /mainbody-->
 <!-- footer-->
 <?php require_once('footer.php'); ?>
 <!-- /footer-->

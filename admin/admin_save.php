@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-30 10:46:30
 person: Feng
 **************************
@@ -92,7 +92,7 @@ else if($action == 'update')
 			ShowMsg('抱歉，旧密码错误！','-1');
 			exit();
 		}
-		
+
 		$sql = "UPDATE `$tbname` SET password='$password', nickname='$nickname', question='$question', answer='$answer', levelname='$levelname', checkadmin='$checkadmin' WHERE id=$id";
 	}
 

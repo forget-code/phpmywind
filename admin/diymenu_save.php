@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-30 13:45:35
 person: Feng
 **************************
@@ -39,7 +39,7 @@ if($action == 'add')
 			}
 		}
 	}
-	
+
 	header("location:$gourl");
 	exit();
 }
@@ -92,7 +92,7 @@ else if($action == 'delalldiymenu')
 	{
 		$dosql->ExecNoneQuery("DELETE FROM `$tbname` WHERE (id=$v Or `parentid`=$v)");
 	}
-	
+
 	header("location:$gourl");
 	exit();
 }

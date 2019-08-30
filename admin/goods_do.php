@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-6-8 10:44:13
 person: Feng
 **************************
@@ -55,34 +55,34 @@ if($action == 'delall')
 <div class="toolbarTab">
 	<ul>
 		<?php
-	
+
 		$flagArr = array('all'=>'全部', 'notcheck'=>'未审', 'ischeck'=>'已审');
-	
-	
+
+
 		$dosql->Execute("SELECT * FROM `#@__goodsflag` ORDER BY `orderid` ASC");
 		while($row = $dosql->GetArray())
 		{
 			$flagArr[$row['flag']] = $row['flagname'];
 		}
-		
-		
+
+
 		$flagArrNum = count($flagArr);
-	
+
 		foreach($flagArr as $k => $v)
 		{
 			if($flag == $k)
 				$flagOn = 'on';
 			else
 				$flagOn = '';
-	
+
 			echo '<li class="'.$flagOn.'"><a href="javascript:;" onclick="GetFlag(\''.$k.'\')">'.$v.'</a></li><li class="line">-</li>';
 		}
-	
+
 		if($flag == 'author')
 			$flagOn = 'on';
 		else
 			$flagOn = '';
-	
+
 		echo '<li class="'.$flagOn.'"><a href="javascript:;" onclick="GetFlag(\'author\')">我发布的文档</a></li><li class="line">-</li><li><a href="javascript:;" onclick="ShowRecycle();">内容回收站</a></li>';
 		?>
 	</ul>
@@ -131,7 +131,7 @@ if($action == 'delall')
 			//删除权限
 			if($row['action'] == 'del')
 				$catgoryDelPriv[]    = $row['classid'];
-			
+
 		}
 
 		$catgoryListPriv = trim($catgoryListPriv,',');
@@ -139,13 +139,13 @@ if($action == 'delall')
 
 
 	//设置sql
-	$sql = "SELECT * FROM `#@__$tbname` WHERE `delstate`=''";	
+	$sql = "SELECT * FROM `#@__$tbname` WHERE `delstate`=''";
 
 	if(!empty($catgoryListPriv)) $sql .= " AND classid IN ($catgoryListPriv)";
 
 	if(!empty($cid))     $sql .= " AND (classid=$cid OR parentstr Like '%,$cid,%')";
-	
-	if(!empty($tid))     $sql .= " AND (typeid=$tid OR typepstr LIKE '%,$tid,%')";	
+
+	if(!empty($tid))     $sql .= " AND (typeid=$tid OR typepstr LIKE '%,$tid,%')";
 
 	if(!empty($keyword)) $sql .= " AND title LIKE '%$keyword%'";
 
@@ -156,7 +156,7 @@ if($action == 'delall')
 		else if($flag == 'notcheck')
 			$sql .= "AND checkinfo='false'";
 		else if($flag == 'ischeck')
-			$sql .= "AND checkinfo='true'";	
+			$sql .= "AND checkinfo='true'";
 		else if($flag == 'author')
 			$sql .= "AND author='".$_SESSION['admin']."'";
 		else
@@ -229,14 +229,14 @@ if($action == 'delall')
 		{
 			case 'true':
 				$checkinfo = '已审';
-				break;  
+				break;
 			case 'false':
 				$checkinfo = '未审';
 				break;
 			default:
 				$checkinfo = '没有获取到参数';
 		}
-		
+
 
 		//修改权限
 		if($cfg_adminlevel != 1)
@@ -264,8 +264,8 @@ if($action == 'delall')
 		{
 			$delStr = '<a href="javascript:;" onclick="ClearInfo('.$row['id'].')">删除</a>';
 		}
-		
-		
+
+
 		//审核权限
 		if($cfg_adminlevel != 1)
 		{
@@ -291,7 +291,7 @@ if($action == 'delall')
 		<td class="action endCol"><span id="check<?php echo $row['id']; ?>"><?php echo $checkStr; ?></span> | <span><?php echo $updateStr; ?></span> | <span class="nb"><?php echo $delStr; ?></span></td>
 	</tr>
 	<?php
-	}	
+	}
 	?>
 </table>
 <?php

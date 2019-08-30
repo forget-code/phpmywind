@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2012-9-15 12:14:40
 person: Feng
 **************************
@@ -77,7 +77,7 @@ $(function(){
 		onChange  : ShowCoords,
 		onSelect  : ShowCoords,
 		onRelease : ClearCoords
-	});	
+	});
 
 
 	//鼠标离控件左上角的相对位置

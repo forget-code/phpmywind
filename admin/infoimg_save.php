@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-30 17:01:13
 person: Feng
 **************************
@@ -48,14 +48,14 @@ if($action == 'add')
 		$r = $dosql->GetOne("SELECT `parentstr` FROM `#@__infoclass` WHERE `id`=$parentid");
 		$parentstr = $r['parentstr'].$parentid.',';
 	}
-	
-	
+
+
 	//获取mainid
 	if($mainid != '-1')
 	{
 		$row = $dosql->GetOne("SELECT `parentid` FROM `#@__maintype` WHERE `id`=$mainid");
 		$mainpid = $row['parentid'];
-	
+
 		if($mainpid == 0)
 		{
 			$mainpstr = '0,';
@@ -91,7 +91,7 @@ if($action == 'add')
 		{
 			$picarrTmp[] = $picarr[$i].','.$picarr_txt[$i];
 		}
-	
+
 		$picarr = serialize($picarrTmp);
 	}
 
@@ -188,7 +188,7 @@ if($action == 'add')
 					}
 					else
 					{
-						$v = $_POST[$row['fieldname']];	
+						$v = $_POST[$row['fieldname']];
 					}
 				}
 			}
@@ -205,22 +205,22 @@ if($action == 'add')
 					exit();
 				}
 			}
-	
+
 			if($row['fieldtype'] == 'datetime')
 			{
 				$v = GetMkTime($v);
 			}
-			
+
 			if($row['fieldtype'] == 'fileall')
 			{
 				$vTxt = isset($_POST[$row['fieldname'].'_txt']) ? $_POST[$row['fieldname'].'_txt'] : '';
-	
+
 				if(is_array($v) &&
 				   is_array($vTxt))
 				{
 					$vNum = count($v);
 					$vTmp = '';
-			
+
 					for($i=0;$i<$vNum;$i++)
 					{
 						if(@!get_magic_quotes_gpc())
@@ -232,23 +232,23 @@ if($action == 'add')
 							$vTmp[] = $v[$i].','.$vTxt[$i];
 						}
 					}
-					
+
 					$v = serialize($vTmp);
 				}
 			}
-			
+
 			if($row['fieldtype'] == 'checkbox')
 			{
 				@$v = implode(',',$v);
 			}
-	
+
 			$fieldname  .= ", $k";
 			$fieldvalue .= ", '$v'";
 			$fieldstr   .= ", $k='$v'";
 		}
 	}
 
-	
+
 	//自动缩略图处理
 	$r = $dosql->GetOne("SELECT `picwidth`,`picheight` FROM `#@__infoclass` WHERE `id`=$classid");
 	if(!empty($r['picwidth']) &&
@@ -300,14 +300,14 @@ else if($action == 'update')
 		$r = $dosql->GetOne("SELECT `parentstr` FROM `#@__infoclass` WHERE `id`=$parentid");
 		$parentstr = $r['parentstr'].$parentid.',';
 	}
-	
-	
+
+
 	//获取mainid
 	if($mainid != '-1')
 	{
 		$row = $dosql->GetOne("SELECT `parentid` FROM `#@__maintype` WHERE `id`=$mainid");
 		$mainpid = $row['parentid'];
-	
+
 		if($mainpid == 0)
 		{
 			$mainpstr = '0,';
@@ -343,7 +343,7 @@ else if($action == 'update')
 		{
 			$picarrTmp[] = $picarr[$i].','.$picarr_txt[$i];
 		}
-		
+
 		$picarr = serialize($picarrTmp);
 	}
 
@@ -439,7 +439,7 @@ else if($action == 'update')
 					}
 					else
 					{
-						$v = $_POST[$row['fieldname']];	
+						$v = $_POST[$row['fieldname']];
 					}
 				}
 			}
@@ -456,22 +456,22 @@ else if($action == 'update')
 					exit();
 				}
 			}
-	
+
 			if($row['fieldtype'] == 'datetime')
 			{
 				$v = GetMkTime($v);
 			}
-			
+
 			if($row['fieldtype'] == 'fileall')
 			{
 				$vTxt = isset($_POST[$row['fieldname'].'_txt']) ? $_POST[$row['fieldname'].'_txt'] : '';
-	
+
 				if(is_array($v) &&
 				   is_array($vTxt))
 				{
 					$vNum = count($v);
 					$vTmp = '';
-			
+
 					for($i=0;$i<$vNum;$i++)
 					{
 						if(@!get_magic_quotes_gpc())
@@ -483,16 +483,16 @@ else if($action == 'update')
 							$vTmp[] = $v[$i].','.$vTxt[$i];
 						}
 					}
-					
+
 					$v = serialize($vTmp);
 				}
 			}
-			
+
 			if($row['fieldtype'] == 'checkbox')
 			{
 				@$v = implode(',',$v);
 			}
-	
+
 			$fieldname  .= ", $k";
 			$fieldvalue .= ", '$v'";
 			$fieldstr   .= ", $k='$v'";

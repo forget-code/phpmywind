@@ -1,6 +1,6 @@
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-22 00:05:34
 person: Feng
 **************************
@@ -11,17 +11,17 @@ $(function(){
 
 		//用户信息
 		userInfo();
-	
+
 		//左侧菜单
 		LeftMenuToggle();
-		
+
 		//锁屏按钮
 		bindLockScreen();
-		
+
 		//快捷菜单
 		bindQuickMenu();
-		
-	
+
+
 	}).keydown(function(event){
 
 	//快捷键

@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2012-10-22 16:08:34
 person: Adu
 **************************
@@ -20,13 +20,13 @@ class Controller_AvatarFlashUpload extends Controller_Base{
 
     /**
      * 构造函数。(ok)
-     * 
+     *
      */
     public function __construct(){
         parent::__construct();
     }
 
-    
+
     /**
      * 获取显示上传flash的代码(ok)
      * 来源：Ucenter的uc_avatar函数
@@ -48,10 +48,10 @@ class Controller_AvatarFlashUpload extends Controller_Base{
 
         $uc_input = urlencode(common::authcode('uid='.$uid.
                                                '&agent='.md5($_SERVER['HTTP_USER_AGENT']).
-                                               "&time=".time(), 
+                                               "&time=".time(),
                                                    'ENCODE', $this->config->authkey)
                              );
-        
+
         $uc_avatarflash = $this->config->uc_api.'/images/camera.swf?nt=1&inajax=1&input='.$uc_input.'&agent='.md5($_SERVER['HTTP_USER_AGENT']).'&ucapi='.urlencode($this->config->uc_api. substr( $_SERVER['PHP_SELF'], strrpos($_SERVER['PHP_SELF'], '/') ) ).'&uploadSize='.$this->config->uploadsize;
         if( $returnhtml == 1 ) {
             $result = '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="450" height="253" id="mycamera" align="middle">
@@ -108,20 +108,20 @@ class Controller_AvatarFlashUpload extends Controller_Base{
         if(empty($_FILES['Filedata'])) {
             return -3;
         }
-        
+
         $imgext = strtolower('.'. common::fileext($_FILES['Filedata']['name']));
         if(!in_array($imgext, $this->config->imgtype)) {
             unlink($_FILES['Filedata']['tmp_name']);
             return -2;
         }
-        
+
         if( $_FILES['Filedata']['size'] > ($this->config->uploadsize * 1024) ){
             unlink($_FILES['Filedata']['tmp_name']);
             return 'Inage is TOO BIG, PLEASE UPLOAD NO MORE THAN '. $this->config->uploadsize .'KB';
         }
-        
+
         list($width, $height, $type, $attr) = getimagesize($_FILES['Filedata']['tmp_name']);
-        
+
         $filetype = $this->config->imgtype[$type];
         $tmpavatar = realpath($this->config->tmpdir).'/upload'.$uid.$filetype;
         file_exists($tmpavatar) && unlink($tmpavatar);
@@ -140,7 +140,7 @@ class Controller_AvatarFlashUpload extends Controller_Base{
 
         return $avatarurl;
     }
-    
+
     /**
      * 头像上传第二步，上传到头像存储位置
      *
@@ -163,11 +163,11 @@ class Controller_AvatarFlashUpload extends Controller_Base{
             $this->make_avatar_path( $uid, realpath($this->config->avatardir) );
         }
         $avatartype = common::getgpc('avatartype', 'G') == 'real' ? 'real' : 'virtual';
-        
+
         $avatarsize = array( 1 => 'big', 2 => 'middle', 3 => 'small');
-        
+
         $success = 1;
-        
+
         foreach( $avatarsize as $key => $size ){
             $avatarrealpath = realpath( $this->config->avatardir) . DIRECTORY_SEPARATOR. $this->get_avatar_filepath($uid, $size, $avatartype);
             $avatarcontent = $this->_flashdata_decode(common::getgpc('avatar'.$key, 'P'));
@@ -195,18 +195,18 @@ class Controller_AvatarFlashUpload extends Controller_Base{
             $tmpavatar = realpath($this->config->tmpdir.'/upload'. $uid. $imgtype);
             file_exists($tmpavatar) && unlink($tmpavatar);
         }
-        
+
         if($success) {
             return '<?xml version="1.0" ?><root><face success="1"/></root>';
         } else {
             return '<?xml version="1.0" ?><root><face success="0"/></root>';
         }
     }
-    
+
     /**
      * flash data decode
      * 来源：Ucenter
-     * 
+     *
      * @param string $s
      * @return unknown
      */
@@ -222,12 +222,12 @@ class Controller_AvatarFlashUpload extends Controller_Base{
         }
         return $r;
     }
-    
+
 
     /**
      * 获取指定uid的头像规范存放目录格式
      * 来源：Ucenter base类的get_home方法
-     * 
+     *
      * @param int $uid uid编号
      * @return string 头像规范存放目录格式
      */
@@ -242,7 +242,7 @@ class Controller_AvatarFlashUpload extends Controller_Base{
     /**
      * 在指定目录内，依据uid创建指定的头像规范存放目录
      * 来源：Ucenter base类的set_home方法
-     * 
+     *
      * @param int $uid uid编号
      * @param string $dir 需要在哪个目录创建？
      */
@@ -275,7 +275,7 @@ class Controller_AvatarFlashUpload extends Controller_Base{
 		$typeadd = $type == 'real' ? '_real' : '';
 		return  $dir1.'/'.$dir2.'/'.$dir3.'/'.substr($uid, -2).$typeadd."_avatar_$size.jpg";
 	}
-	
+
 	/**
 	 * 一次性清空指定uid用户已经存储的头像
 	 *
@@ -295,5 +295,5 @@ class Controller_AvatarFlashUpload extends Controller_Base{
 		}
 		return true;
 	}
-	
+
 }

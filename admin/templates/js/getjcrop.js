@@ -1,6 +1,6 @@
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2012-2-21 9:49:35
 person: Feng
 **************************
@@ -31,8 +31,8 @@ function GetJcrop(frame, input)
 	}
 
 	$("body").append('<iframe frameborder="0" id="'+ frame +'" src="plugin/jcrop/index.php?imgurl='+ encodeURI(imgurl) +'&frame='+ frame +'&input='+ input +'" allowtransparency="true" style="position:absolute;top:0;left:0;width:100%;height:100%;display:none;z-index:9999;" scrolling="no"></iframe>');
-	
-	if($.browser.msie){ 
+
+	if($.browser.msie){
 		window.frames[1].location.reload();
 	}
 

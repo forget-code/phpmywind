@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-30 16:53:58
 person: Feng
 **************************
@@ -71,25 +71,25 @@ else if($action == 'update')
 		if($parentid != $repid)
 		{
 			$childtbname = array('#@__infolist','#@__infoimg','#@__soft','#@__goods');
-			
+
 			//自定义模型
 			$dosql->Execute("SELECT * FROM `#@__diymodel` ORDER BY `id` ASC");
 			while($row = $dosql->GetArray())
 			{
 				$childtbname[] = str_replace($db_tablepre, '#@__', $row['modeltbname']);
 			}
-	
+
 			//更新本类parentstr
 			foreach($childtbname as $k=>$v)
 			{
 				$dosql->ExecNoneQuery("UPDATE `$v` SET parentid='".$parentid."', parentstr='".$parentstr."' WHERE classid=".$id);
 			}
-	
+
 			//更新下级parentstr
 			$doaction->UpParentStr($id, $childtbname, 'parentstr', 'classid');
 		}
-	
-	
+
+
 		$sql = "UPDATE `$tbname` SET siteid='$cfg_siteid', parentid='$parentid', parentstr='$parentstr', infotype='$infotype', classname='$classname', linkurl='$linkurl', picurl='$picurl', picwidth='$picwidth', picheight='$picheight', seotitle='$seotitle', keywords='$keywords', description='$description', orderid='$orderid', checkinfo='$checkinfo' WHERE id=$id";
 		if($dosql->ExecNoneQuery($sql))
 		{
@@ -104,7 +104,7 @@ else if($action == 'update')
 	}
 }
 
-	
+
 //删除栏目
 else if($action == 'delclass')
 {
@@ -122,7 +122,7 @@ else if($action == 'delclass')
 	{
 		$ids .= $row['id'];
 	}
-	
+
 	$ids = trim($ids,',');
 
 	if($ids != '')

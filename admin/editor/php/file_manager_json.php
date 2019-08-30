@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2012-11-14 9:28:12
 person: Feng
 **************************
@@ -120,7 +120,7 @@ if($handle = opendir($current_path))
 		}
 
 		//文件名，包含扩展名
-		$file_list[$i]['filename'] = $filename; 
+		$file_list[$i]['filename'] = $filename;
 
 		//文件最后修改时间
 		$file_list[$i]['datetime'] = date('Y-m-d H:i:s', filemtime($file));

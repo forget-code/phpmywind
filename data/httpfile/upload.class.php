@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-31 22:01:23
 person: Feng
 **************************
@@ -76,7 +76,7 @@ function UploadFile($upfile, $iswatermark='')
 	{
 		return '您上传的文件类型为：['.$tempfile_ext.']，该文件类型不允许上传！';
 	}
-	
+
 	$save_type = $upload_url;
 
 
@@ -108,7 +108,7 @@ function UploadFile($upfile, $iswatermark='')
 	if(!file_exists($upload_dir))
 	{
 		mkdir($upload_dir);
-		
+
 		$fp = fopen($upload_dir.'/index.htm', 'w');
 		fclose($fp);
 	}

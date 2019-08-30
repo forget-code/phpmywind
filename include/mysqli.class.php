@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-31 21:57:47
 person: Feng
 **************************
@@ -11,7 +11,7 @@ person: Feng
 
 /*
  * 数据库类
- * 
+ *
  * 调用这个类前,请先设定这些外部变量
  * $GLOBALS['db_host'];
  * $GLOBALS['db_user'];
@@ -146,15 +146,15 @@ class MySql
         $prefix = '#@__';
         $this->querystring = str_replace($prefix, $this->db_tablepre, $sql);
     }
-	
-	
+
+
 	//执行一个带返回结果的SQL语句，如SELECT，SHOW等
 	function Query($sql='',$id='me')
 	{
 		$this->Execute($sql,$id);
 	}
-	
-	
+
+
 	//执行一个不返回结果的SQL语句，如update,delete,insert等
 	function QueryNone($sql='')
 	{
@@ -195,7 +195,7 @@ class MySql
 		//$t1 = ExecTime();
         //$queryTime = ExecTime() - $t1;
         //if($queryTime > 0.05) {
-           // echo $this->querystring."--{$queryTime}<hr />\r\n"; 
+           // echo $this->querystring."--{$queryTime}<hr />\r\n";
         //}
 
 
@@ -204,7 +204,7 @@ class MySql
             $this->DisplayError(mysqli_error($this->linkid).' Error sql: '.$this->querystring);
         }
     }
-	
+
 
 	//执行一个不返回结果的SQL语句，如update,delete,insert等
     function ExecNoneQuery($sql='')

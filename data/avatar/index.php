@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2012-10-23 14:30:33
 person: Adu
 **************************
@@ -19,7 +19,7 @@ $path = get_avatar_filepath($uid,$size);
 if(is_file($path))
 	header('location:'.get_avatar_filepath($uid,$size));
 else
-	header('location:images/default_avatar.jpg');	
+	header('location:images/default_avatar.jpg');
 
 
 

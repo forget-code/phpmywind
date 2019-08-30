@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-30 17:52:19
 person: Feng
 **************************
@@ -30,7 +30,7 @@ if($mode == 'dir')
 	{
 		$file_path = '../'.$dirname.$filename;
 		$file_url  = $dirname.$filename;
-		
+
 		//验证删除文件规则
 		$match = "/^(\.\.\/uploads)\/(\w+)\/(\d+)\/(\w+)\.(\w{3})$/";
 		$flag = preg_match($match, $file_path);
@@ -57,8 +57,8 @@ if($mode == 'dir')
 			exit();
 		}
 	}
-	
-	
+
+
 	//删除目录
 	else if($action == 'deldir')
 	{
@@ -149,7 +149,7 @@ else if($mode == 'sql')
 
 		//初始化参数
 		$file_path = '../'.$path;
-		
+
 		//验证删除文件规则
 		$match = "/^(\.\.\/uploads)\/(\w+)\/(\d+)\/(\w+)\.(\w{3})$/";
 		$flag = preg_match($match, $file_path);
@@ -209,14 +209,14 @@ else if($mode == 'sql')
 			exit();
 		}
 	}
-	
+
 	else
 	{
 		header("location:$gourl");
 		exit();
 	}
 }
-	
+
 
 //无条件返回
 else

@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-30 13:41:11
 person: Feng
 **************************
@@ -34,7 +34,7 @@ if($action == 'add')
 		ShowMsg('模型表名已存在！',$gourl);
 		exit();
 	}
-	
+
 	$r = $dosql->GetOne("SELECT id FROM `$tbname` WHERE `modelname`='$modelname'");
 	if(!empty($r['id']))
 	{
@@ -126,7 +126,7 @@ else if($action == 'del')
 		exit();
 	}
 
-	
+
 	$r = $dosql->GetOne("SELECT `modeltbname` FROM `#@__diymodel` WHERE `id`=$id");
 	if(isset($r) && is_array($r))
 	{

@@ -1,7 +1,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2012-8-6 9:19:43
 person: Feng
 **************************
@@ -35,7 +35,7 @@ function CheckAll(form, mode)
  *
  * @parma  form  string  表单的名称
  */
- 
+
 function CheckAllBtn(form)
 {
 	for(var i=0; i<form.elements.length; i++)
@@ -88,7 +88,7 @@ function ConfDel(form)
 function Repair(dopost)
 {
     document.forms[0].action = dopost;
-    document.forms[0].submit();   
+    document.forms[0].submit();
 }
 
 

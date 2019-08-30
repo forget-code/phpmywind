@@ -1,6 +1,6 @@
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2012-6-11 15:44:16
 person: Feng
 **************************
@@ -28,7 +28,7 @@ person: Feng
         $this.after(loading);
 
         var autoScaling = function() {
-            if (settings.scaling) {	
+            if (settings.scaling) {
                 if (img.width > 0 && img.height > 0) {
                     if (img.width / img.height >= settings.width / settings.height) {
                         if (img.width > settings.width) {

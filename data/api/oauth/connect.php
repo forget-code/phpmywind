@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-2 17:23:54
 person: Feng/Karson
 **************************
@@ -98,7 +98,7 @@ class Connect
         if (!isset($_SESSION['qq_state']) ||
 		    $state !== $_SESSION['qq_state'])
             exit('参数错误！请返回重新使用QQ登录！');
-	
+
         $keys = array('code' => $code, 'redirect_uri' => "{$this->url}?method=qq_callback");
         $token = $this->qq->getAccessToken('code', $keys);
 

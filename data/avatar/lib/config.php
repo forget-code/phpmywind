@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2012-10-22 16:08:34
 person: Adu
 **************************
@@ -34,7 +34,7 @@ class config extends ArrayObject{
             $this->$key = $value;
         }
     }
-    
+
     public function __get($name){
         $this->$name = null;
         return null;

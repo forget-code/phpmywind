@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-22 21:58:57
 person: Feng
 **************************
@@ -47,7 +47,7 @@ if($action == 'selsite')
 		echo 1;
 	else
 		echo 2;
-	
+
 	exit();
 }
 
@@ -89,7 +89,7 @@ if($action == 'selpriv')
 		else
 		{
 			$_SESSION['t_adminlevel'] = $privid;
-			
+
 			echo 1;
 		}
 	}
@@ -184,10 +184,10 @@ if($action == 'catpsize')
 	$r = $dosql->GetOne("SELECT `picwidth`,`picheight` FROM `#@__infoclass` WHERE `id`=".$pid);
 	if(isset($r['picwidth']))
 		$str .= $r['picwidth'];
-	
+
 	if(isset($r['picheight']))
 		$str .= '|'.$r['picheight'];
-	
+
 	echo $str;
 	exit();
 }
@@ -227,7 +227,7 @@ if($action == 'getarea')
 		$sql .= "datagroup='$datagroup' AND datavalue>$v AND datavalue<".($v + 500);
 	else
 		$sql .= "datavalue LIKE '$v.%%%' AND datagroup='$datagroup'";
-	
+
 	$sql .= " ORDER BY orderid ASC, datavalue ASC";
 
 
@@ -236,8 +236,8 @@ if($action == 'getarea')
 	{
 		$str .= '<option value="'.$row['datavalue'].'">'.$row['dataname'].'</option>';
 	}
-	
-	if($str == '') $str .= '<option value="-1">--</option>'; 
+
+	if($str == '') $str .= '<option value="-1">--</option>';
 	echo $str;
 	exit();
 }
@@ -263,10 +263,10 @@ if($action == 'goodsattr')
 					  <td width="25%" height="40" align="right">'.$row['attrname'].'：</td>
 					  <td><input type="text" name="attrvalue[]" id="attrvalue[]" class="input" />
 					      <input type="hidden" name="attrid[]" id="attrid[]" value="'.$row['id'].'">';
-				
+
 				if($i <= 1)
 					echo '<span class="cnote">不同属性值用 <span class="maroon2">|</span> 隔开，例如：黑色|白色 等</span>';
-				
+
 				echo '</td></tr></table>';
 
 				$i++;
@@ -281,7 +281,7 @@ if($action == 'goodsattr')
 	{
 		echo '<div style="text-align:center;color:#9C0;">请选择商品类别获取自定义属性</div>';
 	}
-	
+
 	exit();
 }
 
@@ -300,8 +300,8 @@ if($action == 'recycel' or $action == 'reset' or $action == 'del' or
 		echo '参数错误，没有获取到表名称';
 		exit();
 	}
-	
-	
+
+
 	//选择执行操作
 	switch($action)
 	{
@@ -309,32 +309,32 @@ if($action == 'recycel' or $action == 'reset' or $action == 'del' or
 			$sql = "UPDATE `$tbname` SET delstate='', deltime=0 WHERE id=$id";
 			$dosql->ExecNoneQuery($sql);
 			break;
-	
+
 		case 'del':
 			$sql = "DELETE FROM `$tbname` WHERE id=$id";
 			$dosql->ExecNoneQuery($sql);
 			break;
-	
+
 		case 'resetall':
 			$sql = "UPDATE `$tbname` SET delstate='', deltime=0 WHERE id IN ($ids)";
 			$dosql->ExecNoneQuery($sql);
 			break;
-	
+
 		case 'delall':
 			$sql = "DELETE FROM `$tbname` WHERE id IN ($ids)";
 			$dosql->ExecNoneQuery($sql);
 			break;
-	
+
 		case 'empty':
 			$sql = "DELETE FROM `$tbname` WHERE delstate='true'";
 			$dosql->ExecNoneQuery($sql);
 			break;
 		default:
 	}
-	
+
 	//Ajax输出数据
 	$dosql->Execute("SELECT * FROM `$tbname` WHERE delstate='true' ORDER BY deltime DESC");
-	
+
 	if($dosql->GetTotalRow() == 0)
 	{
 		echo '暂无内容';
@@ -344,7 +344,7 @@ if($action == 'recycel' or $action == 'reset' or $action == 'del' or
 	{
 		while($row = $dosql->GetArray())
 		{
-		 
+
 			$r = $dosql->GetOne("SELECT `classname` FROM `#@__infoclass` WHERE id=".$row['classid']);
 			if(isset($r['classname']))
 				$classname = $r['classname'].' ['.$row['classid'].']';
@@ -385,7 +385,7 @@ if($action == 'adminnotes')
 		$sql = "INSERT INTO `#@__adminnotes` (uname, body, posttime, postip) VALUES ('$uname', '$body', '$posttime', '$postip')";
 		$dosql->ExecNoneQuery($sql);
 	}
-	
+
 	exit();
 }
 
@@ -419,14 +419,14 @@ if($action == 'updataauth')
 if($action = 'selsiteeq')
 {
 	$eq = isset($eq) ? $eq : 'pc';
-	
+
 	if($eq == 'pc')
 		$_SESSION['siteeq'] = 'pc';
 	else if($eq == 'mobile')
 		$_SESSION['siteeq'] = 'mobile';
 	else
 		$_SESSION['siteeq'] = 'pc';
-	
+
 	echo TRUE;
 	exit();
 }

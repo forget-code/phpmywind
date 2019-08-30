@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-30 11:11:47
 person: Feng
 **************************
@@ -23,7 +23,7 @@ if($action == 'add')
 	if($dosql->ExecNoneQuery($sql))
 	{
 		$lastid = $dosql->GetLastID();
-		
+
 		if(isset($priv) && is_array($priv))
 		{
 			foreach($priv as $k=>$siteids)
@@ -65,7 +65,7 @@ else if($action == 'update')
 
 	if($dosql->ExecNoneQuery($sql))
 	{
-		
+
 		//删除权限
 		$dosql->ExecNoneQuery("DELETE FROM `#@__adminprivacy` WHERE `groupid`=$id");
 
@@ -93,7 +93,7 @@ else if($action == 'update')
 				$dosql->ExecNoneQuery("INSERT INTO `#@__adminprivacy` (groupid, siteid, model, classid, action) VALUES ('$lastid', '0', '$privmodel', '0', 'all')");
 			}
 		}
-		
+
 
 		header("location:$gourl");
 		exit();

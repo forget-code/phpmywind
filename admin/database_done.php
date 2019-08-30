@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-30 12:18:29
 person: Feng
 **************************
@@ -50,7 +50,7 @@ function PutInfo($msg1,$msg2='')
 if($dopost == 'backup')
 {
 
-	if(empty($isstruct)) $isstruct = 0;  //表结构是否备份	
+	if(empty($isstruct)) $isstruct = 0;  //表结构是否备份
 	if(empty($startpos)) $startpos = 0;  //当前备份条数（分卷号）
 	if(empty($nowtable)) $nowtable = ''; //当前备份表
 	if(empty($fsize))    $fsize = 2048;  //分卷大小，单位KB
@@ -301,7 +301,7 @@ if($dopost == 'reset')
 		//如果包含配置表，则需要更新配置文件
 		if(preg_match("#webconfig#", $fname))
 			$conftb = 1;
-		
+
 		if(empty($conftb)) $conftb = '';
 	}
 
@@ -385,25 +385,25 @@ if($dopost == 'reset')
 				while($row = $dosql->GetArray())
 				{
 					//强制去掉 '
-					//强制去掉最后一位 / 
+					//强制去掉最后一位 /
 					$vartmp = str_replace("'",'',$row['varvalue']);
 
 					if(substr($vartmp, -1) == '\\')
 					{
 						$vartmp = substr($vartmp,1,-1);
 					}
-			
+
 					if($row['vartype'] == 'number')
 					{
 						if($row['varvalue'] == '')
 						{
 							$vartmp = 0;
 						}
-			
+
 						$str .= "\${$row['varname']} = ".$vartmp.";\r\n";
 					}
 					else
-					{			
+					{
 						$str .= "\${$row['varname']} = '".$vartmp."';\r\n";
 					}
 				}

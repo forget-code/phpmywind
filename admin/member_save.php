@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-30 17:16:14
 person: Feng
 **************************
@@ -33,7 +33,7 @@ if($action == 'add')
 		ShowMsg('两次输入的密码不一样！','-1');
 		exit();
 	}
-	
+
 	$r = $dosql->GetOne("SELECT username FROM `$tbname` WHERE username='$username'");
 	if(!empty($r['username']))
 	{
@@ -45,7 +45,7 @@ if($action == 'add')
 	$regtime  = GetMkTime($regtime);
 	$regip    = GetIP();
 
-	$sql = "INSERT INTO `$tbname` (username, password, question, answer, cnname, enname, sex, birthtype, birth_year, birth_month, birth_day, astro, bloodtype, trade, live_prov, live_city, live_country, home_prov, home_city, home_country, cardtype, cardnum, intro, email, qqnum, mobile, telephone, address_prov, address_city, address_country, address, zipcode, enteruser, expval, integral, regtime, regip, logintime, loginip) VALUES ('$username', '$password', '$question', '$answer', '$cnname', '$enname', '$sex', '$birthtype', '$birth_year', '$birth_month', '$birth_day', '$astro', '$bloodtype', '$trade', '$live_prov', '$live_city', '$live_country', '$home_prov', '$home_city', '$home_country', '$cardtype', '$cardnum', '$intro', '$email', '$qqnum', '$mobile', '$telephone', '$address_prov', '$address_city', '$address_country', '$address', '$zipcode', '$enteruser', '$expval', '$integral', '$regtime', '$regip', '$regtime', '$regip')";	
+	$sql = "INSERT INTO `$tbname` (username, password, question, answer, cnname, enname, sex, birthtype, birth_year, birth_month, birth_day, astro, bloodtype, trade, live_prov, live_city, live_country, home_prov, home_city, home_country, cardtype, cardnum, intro, email, qqnum, mobile, telephone, address_prov, address_city, address_country, address, zipcode, enteruser, expval, integral, regtime, regip, logintime, loginip) VALUES ('$username', '$password', '$question', '$answer', '$cnname', '$enname', '$sex', '$birthtype', '$birth_year', '$birth_month', '$birth_day', '$astro', '$bloodtype', '$trade', '$live_prov', '$live_city', '$live_country', '$home_prov', '$home_city', '$home_country', '$cardtype', '$cardnum', '$intro', '$email', '$qqnum', '$mobile', '$telephone', '$address_prov', '$address_city', '$address_country', '$address', '$zipcode', '$enteruser', '$expval', '$integral', '$regtime', '$regip', '$regtime', '$regip')";
 	if($dosql->ExecNoneQuery($sql))
 	{
 		header("location:$gourl");

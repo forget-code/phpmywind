@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-31 21:59:40
 person: Feng
 **************************
@@ -11,7 +11,7 @@ person: Feng
 
 /*
  * 操作执行类
- * 
+ *
  * 调用这个类前,请先确保外部已设定需要用到的变量
  * $GLOBALS['action'];
  * $GLOBALS['dosql'];
@@ -87,7 +87,7 @@ class actClass
 				$this->DelAll();
 				$this->GoURL();
 			break;
-			
+
 
 			case 'del2':
 				$this->DelNone();

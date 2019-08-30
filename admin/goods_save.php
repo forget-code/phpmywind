@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-30 14:07:16
 person: Feng
 **************************
@@ -59,7 +59,7 @@ if($action == 'add')
 	{
 		$row = $dosql->GetOne("SELECT `parentid` FROM `#@__goodstype` WHERE `id`=$typeid");
 		$typepid = $row['parentid'];
-	
+
 		if($typepid == 0)
 		{
 			$typepstr = '0,';
@@ -75,8 +75,8 @@ if($action == 'add')
 		$typepid  = '-1';
 		$typepstr = '';
 	}
-	
-	
+
+
 	//获取品牌brandpstr
 	if($brandid != '-1')
 	{
@@ -107,7 +107,7 @@ if($action == 'add')
 		$attrids = count($attrid);
 		for($i=0; $i<$attrids; $i++)
 		{
-			$attrstr .= '"'.$attrid[$i].'"=>'.'"'.$attrvalue[$i].'"'; 
+			$attrstr .= '"'.$attrid[$i].'"=>'.'"'.$attrvalue[$i].'"';
 			if($i < $attrids-1)
 			{
 				$attrstr .= ',';
@@ -115,7 +115,7 @@ if($action == 'add')
 		}
 		$attrstr .= ');';
 	}
-	
+
 
 	//文章属性
 	if(is_array($flag))
@@ -231,7 +231,7 @@ if($action == 'add')
 					}
 					else
 					{
-						$v = $_POST[$row['fieldname']];	
+						$v = $_POST[$row['fieldname']];
 					}
 				}
 			}
@@ -248,22 +248,22 @@ if($action == 'add')
 					exit();
 				}
 			}
-	
+
 			if($row['fieldtype'] == 'datetime')
 			{
 				$v = GetMkTime($v);
 			}
-			
+
 			if($row['fieldtype'] == 'fileall')
 			{
 				$vTxt = isset($_POST[$row['fieldname'].'_txt']) ? $_POST[$row['fieldname'].'_txt'] : '';
-	
+
 				if(is_array($v) &&
 				   is_array($vTxt))
 				{
 					$vNum = count($v);
 					$vTmp = '';
-			
+
 					for($i=0;$i<$vNum;$i++)
 					{
 						if(@!get_magic_quotes_gpc())
@@ -275,16 +275,16 @@ if($action == 'add')
 							$vTmp[] = $v[$i].','.$vTxt[$i];
 						}
 					}
-					
+
 					$v = serialize($vTmp);
 				}
 			}
-			
+
 			if($row['fieldtype'] == 'checkbox')
 			{
 				@$v = implode(',',$v);
 			}
-	
+
 			$fieldname  .= ", $k";
 			$fieldvalue .= ", '$v'";
 			$fieldstr   .= ", $k='$v'";
@@ -354,7 +354,7 @@ else if($action == 'update')
 	{
 		$row = $dosql->GetOne("SELECT `parentid` FROM `#@__goodstype` WHERE `id`=$typeid");
 		$typepid = $row['parentid'];
-	
+
 		if($typepid == 0)
 		{
 			$typepstr = '0,';
@@ -370,8 +370,8 @@ else if($action == 'update')
 		$typepid  = '-1';
 		$typepstr = '';
 	}
-	
-	
+
+
 	//获取品牌brandpstr
 	if($brandid != '-1')
 	{
@@ -402,7 +402,7 @@ else if($action == 'update')
 		$attrids = count($attrid);
 		for($i=0; $i<$attrids; $i++)
 		{
-			$attrstr .= '"'.$attrid[$i].'"=>'.'"'.$attrvalue[$i].'"'; 
+			$attrstr .= '"'.$attrid[$i].'"=>'.'"'.$attrvalue[$i].'"';
 			if($i < $attrids-1)
 			{
 				$attrstr .= ',';
@@ -410,7 +410,7 @@ else if($action == 'update')
 		}
 		$attrstr .= ');';
 	}
-	
+
 
 	//文章属性
 	if(is_array($flag))
@@ -526,7 +526,7 @@ else if($action == 'update')
 					}
 					else
 					{
-						$v = $_POST[$row['fieldname']];	
+						$v = $_POST[$row['fieldname']];
 					}
 				}
 			}
@@ -543,22 +543,22 @@ else if($action == 'update')
 					exit();
 				}
 			}
-	
+
 			if($row['fieldtype'] == 'datetime')
 			{
 				$v = GetMkTime($v);
 			}
-			
+
 			if($row['fieldtype'] == 'fileall')
 			{
 				$vTxt = isset($_POST[$row['fieldname'].'_txt']) ? $_POST[$row['fieldname'].'_txt'] : '';
-	
+
 				if(is_array($v) &&
 				   is_array($vTxt))
 				{
 					$vNum = count($v);
 					$vTmp = '';
-			
+
 					for($i=0;$i<$vNum;$i++)
 					{
 						if(@!get_magic_quotes_gpc())
@@ -570,16 +570,16 @@ else if($action == 'update')
 							$vTmp[] = $v[$i].','.$vTxt[$i];
 						}
 					}
-					
+
 					$v = serialize($vTmp);
 				}
 			}
-			
+
 			if($row['fieldtype'] == 'checkbox')
 			{
 				@$v = implode(',',$v);
 			}
-	
+
 			$fieldname  .= ", $k";
 			$fieldvalue .= ", '$v'";
 			$fieldstr   .= ", $k='$v'";

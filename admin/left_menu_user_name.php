@@ -25,10 +25,10 @@
 		<div class="overview">
 			<!--scrollbar start-->
 			<?php
-			
+
 			//栏目名称管理
 			$dosql->Execute("SELECT * FROM `#@__adminprivacy` WHERE `siteid`='$cfg_siteid' AND `groupid`='$cfg_adminlevel' AND `model`='category' AND (`action`='list' OR `action`='add') GROUP BY `classid` ORDER BY `classid` ASC");
-			
+
 			if($dosql->GetTotalRow() < 1)
 			{
 				echo '<div class="tc" style="width:180px;">~(>_<)~<br />您暂无任何可操作栏目</div>';
@@ -94,7 +94,7 @@
 						}
 						echo '</div></div><div class="hr_5"></div>';
 					}
-	
+
 					$i++;
 				}
 			}
@@ -104,7 +104,7 @@
 	</div>
 </div>
 <div class="bGradient"></div>
-<div class="copyright"> © 2014 <a href="http://phpMyWind.com/" target="_blank">phpMyWind.com</a><br />
+<div class="copyright"> © 2015 <a href="http://phpMyWind.com/" target="_blank">phpMyWind.com</a><br />
 	All Rights Reserved. </div>
 <div class="tabMenu">
 	<a href="left_menu_user.php" title="切换到功能菜单" class="name"></a>

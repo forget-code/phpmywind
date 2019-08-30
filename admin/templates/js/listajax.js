@@ -1,7 +1,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-28 00:05:59
 person: Feng
 **************************
@@ -37,7 +37,7 @@ function ShowList(data, textStatus, xmlHttp)
 {
 	$("#list").html(data);
 	$(".masklayer").hide();
-	
+
 	//判断快捷操作栏
 	QuickToolBar();
 }
@@ -49,7 +49,7 @@ function GetDone(data, textStatus, xmlHttp)
 	$("#list").html(data);
 	$(".masklayer").hide();
 	$(".loading4").hide();
-	
+
 	//判断快捷操作栏
 	QuickToolBar();
 }
@@ -59,7 +59,7 @@ function GetDone(data, textStatus, xmlHttp)
 function GetType(par_cid, classname, obj)
 {
 	cid = par_cid;
-	
+
 	if(cid == ''){
 		obj.html(classname);
 	}else{
@@ -83,7 +83,7 @@ function GetType(par_cid, classname, obj)
 function GetType2(par_tid, classname, obj)
 {
 	tid = par_tid;
-	
+
 	if(tid == ''){
 		obj.html(classname);
 	}else{
@@ -195,13 +195,13 @@ function AjaxClearAll()
 		if(confirm("确定要删除选中的信息吗？"))
 		{
 			var ids = '';
-	
+
 			ckobj.each(function(){
 				if($(this).val() != 'on'){
 					ids += $(this).val() + ',';
 				}
 			});
-		
+
 			ids = ids.slice(0,-1);
 
 			$.ajax({
@@ -248,7 +248,7 @@ function CheckInfo(par_id,state)
 function ShowRecycle()
 {
 	var recycle_title;
-	
+
 	if(pag == "infolist"){
 		recycle_title = "信息列表回收站";
 

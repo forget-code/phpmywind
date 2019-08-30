@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-6-1 12:20:58
 person: Feng
 **************************
@@ -24,7 +24,7 @@ if(IsMobile() && $dopost != 'login')
 //判断登录请求
 if($dopost == 'login')
 {
-	
+
 	//初始化参数
 	$username = empty($username) ? '' : $username;
 	$password = empty($password) ? '' : md5(md5($password));
@@ -60,7 +60,7 @@ if($dopost == 'login')
 
 	//获取用户信息
 	$row = $dosql->GetOne("SELECT * FROM `#@__admin` WHERE `username`='$username'");
-	
+
 
 	//获取管理组信息
 	if(isset($row) && is_array($row))
@@ -114,8 +114,8 @@ if($dopost == 'login')
 		ShowMsg('抱歉，您的账号被禁止登录！','login.php');
 		exit();
 	}
-	
-	
+
+
 	//密码正确，查看管理组是否被禁用
 	else if($row2['checkinfo'] == 'false')
 	{
@@ -170,7 +170,7 @@ if($dopost == 'login')
 
 		//更新登录数据
 		$dosql->ExecNoneQuery("UPDATE `#@__admin` SET loginip='$loginip',logintime='$logintime' WHERE `username`='$username'");
-		
+
 		//更新操作日志
 		SetSysEvent('login');
 
@@ -205,7 +205,7 @@ function GetLoginBg()
 		$loginbgrepeat = 'repeat-y';
 	else
 		$loginbgrepeat = 'no-repeat';
-	
+
 	//背景对齐
 	if($cfg_loginbgpos == 0)
 		$loginbgpos = 'left 0';
@@ -215,7 +215,7 @@ function GetLoginBg()
 		$loginbgpos = 'right 0';
 	else
 		$loginbgpos = 'center 0';
-	
+
 	return 'style="background-color:'.$cfg_loginbgcolor.';background-image:url('.$cfg_loginbgimg.');background-repeat:'.$loginbgrepeat.';background-position:'.$loginbgpos.';"';
 }
 
@@ -276,29 +276,29 @@ $(function(){
 			$(this).prev().show();
 		}
 	});
-	
+
 	$("#username").focus(function(){
-		$("#username").attr("class", "uname inputOn"); 
+		$("#username").attr("class", "uname inputOn");
 	}).blur(function(){
-		$("#username").attr("class", "uname input"); 
+		$("#username").attr("class", "uname input");
 	});
 
 	$("#password").focus(function(){
-		$("#password").attr("class", "pwd inputOn"); 
+		$("#password").attr("class", "pwd inputOn");
 	}).blur(function(){
-		$("#password").attr("class", "pwd input"); 
+		$("#password").attr("class", "pwd input");
 	});
 
 	$("#question").focus(function(){
-		$(".quesArea").attr("class", "quesAreaOn"); 
+		$(".quesArea").attr("class", "quesAreaOn");
 	}).blur(function(){
-		$(".quesAreaOn").attr("class", "quesArea"); 
+		$(".quesAreaOn").attr("class", "quesArea");
 	});
 
 	$("#answer").focus(function(){
-		$(".quesArea").attr("class", "quesAreaOn"); 
+		$(".quesArea").attr("class", "quesAreaOn");
 	}).blur(function(){
-		$(".quesAreaOn").attr("class", "quesArea"); 
+		$(".quesAreaOn").attr("class", "quesArea");
 	});
 
 	$("#username").focus();
@@ -353,6 +353,6 @@ $(function(){
 		</div>
 	</div>
 </div>
-<div class="loginCopyright">© 2014 phpMyWind.com</div>
+<div class="loginCopyright">© 2015 phpMyWind.com</div>
 </body>
 </html>

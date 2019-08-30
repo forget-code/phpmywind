@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-30 13:34:13
 person: Feng
 **************************
@@ -42,7 +42,7 @@ switch($infotype)
 		}
 		else
 		{
-			
+
 			//防止模型被删除无法获取表名
 			if($action == 'del')
 			{
@@ -79,7 +79,7 @@ if($action == 'add')
 		$fieldtype2 = 'int';
 		$fieldlong  = 10;
 	}
-	
+
 	if(empty($fieldtype2))
 	{
 		$fieldtype2 = $fieldtype;
@@ -94,7 +94,7 @@ if($action == 'add')
 	{
 		$sql .= "($fieldlong)";
 	}
-	
+
 	$sql .= " NOT NULL";
 
 

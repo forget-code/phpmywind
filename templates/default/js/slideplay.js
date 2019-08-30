@@ -1,6 +1,6 @@
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2011-11-9 13:18:36
 person: Feng
 **************************
@@ -11,7 +11,7 @@ $(function() {
 	var len = $("#slideplay ul li").length; //获取焦点图个数
 	var index = 0;
 	var picTimer;
-	
+
 	//以下代码添加数字按钮和按钮后的半透明条，还有上一页、下一页两个按钮
 	var btn = "<div class='btnBg'></div><div class='btn'>";
 	for(var i=0; i < len; i++) {
@@ -50,7 +50,7 @@ $(function() {
 
 	//本例为左右滚动，即所有li元素都是在同一排向左浮动，所以这里需要计算出外围ul元素的宽度
 	$("#slideplay ul").css("width",sWidth * (len));
-	
+
 	//鼠标滑上焦点图时停止自动播放，滑出时开始自动播放
 	$("#slideplay").hover(function() {
 		clearInterval(picTimer);
@@ -61,7 +61,7 @@ $(function() {
 			if(index == len) {index = 0;}
 		},4000); //此4000代表自动播放的间隔，单位：毫秒
 	}).trigger("mouseleave");
-	
+
 	//显示图片函数，根据接收的index值显示相应的内容
 	function showPics(index) { //普通切换
 		var nowLeft = -index*sWidth; //根据index值计算ul元素的left值

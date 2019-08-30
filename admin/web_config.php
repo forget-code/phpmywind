@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2012-8-22 9:08:29
 person: Feng
 **************************
@@ -39,7 +39,7 @@ function WriteConfig()
 	while($row = $dosql->GetArray())
 	{
 		//强制去掉 '
-		//强制去掉最后一位 / 
+		//强制去掉最后一位 /
 		$vartmp = str_replace("'",'',$row['varvalue']);
 
 		if(substr($vartmp, -1) == '\\')
@@ -57,7 +57,7 @@ function WriteConfig()
 			$str .= "\${$row['varname']} = ".$vartmp.";\r\n";
 		}
 		else
-		{			
+		{
 			$str .= "\${$row['varname']} = '".$vartmp."';\r\n";
 		}
 	}
@@ -136,7 +136,7 @@ function RewriteURL_Str($d,$r)
 	$u7   = str_ireplace('|-]', '}', str_ireplace('[-|', '{R:',rtrim($u7,'&amp;amp;')));
 	$newr = str_ireplace('.', '\.', $r);
 	$newu = str_ireplace('[-|', '$', str_ireplace('|-]', '', $u));
-    
+
 
 	return array($newr, $newu, $u6, $u7, $u2);
 }
@@ -301,77 +301,77 @@ function RewriteURL()
 	$iis7 .= '	&lt;match url="^(.*/)*'.$r_about[0].'$" /&gt;'."\r\n";
 	$iis7 .= '	&lt;action type="Rewrite" url="{R:1}/'.$r_about[3].'" /&gt;'."\r\n";
 	$iis7 .= '&lt;/rule&gt;'."\r\n";
-	
+
 	$iis7 .= '&lt;rule name="news"&gt;'."\r\n";
 	$iis7 .= '	&lt;match url="^(.*/)*'.$r_news[0].'$" /&gt;'."\r\n";
 	$iis7 .= '	&lt;action type="Rewrite" url="{R:1}/'.$r_news[3].'" /&gt;'."\r\n";
 	$iis7 .= '&lt;/rule&gt;'."\r\n";
-	
+
 	$iis7 .= '&lt;rule name="newsshow"&gt;'."\r\n";
 	$iis7 .= '	&lt;match url="^(.*/)*'.$r_newsshow[0].'$" /&gt;'."\r\n";
 	$iis7 .= '	&lt;action type="Rewrite" url="{R:1}/'.$r_newsshow[3].'" /&gt;'."\r\n";
 	$iis7 .= '&lt;/rule&gt;'."\r\n";
-	
+
 	$iis7 .= '&lt;rule name="product"&gt;'."\r\n";
 	$iis7 .= '	&lt;match url="^(.*/)*'.$r_product[0].'$" /&gt;'."\r\n";
 	$iis7 .= '	&lt;action type="Rewrite" url="{R:1}/'.$r_product[3].'" /&gt;'."\r\n";
 	$iis7 .= '&lt;/rule&gt;'."\r\n";
-	
+
 	$iis7 .= '&lt;rule name="productshow"&gt;'."\r\n";
 	$iis7 .= '	&lt;match url="^(.*/)*'.$r_productshow[0].'$" /&gt;'."\r\n";
 	$iis7 .= '	&lt;action type="Rewrite" url="{R:1}/'.$r_productshow[3].'" /&gt;'."\r\n";
 	$iis7 .= '&lt;/rule&gt;'."\r\n";
-	
+
 	$iis7 .= '&lt;rule name="case"&gt;'."\r\n";
 	$iis7 .= '	&lt;match url="^(.*/)*'.$r_case[0].'$" /&gt;'."\r\n";
 	$iis7 .= '	&lt;action type="Rewrite" url="{R:1}/'.$r_case[3].'" /&gt;'."\r\n";
 	$iis7 .= '&lt;/rule&gt;'."\r\n";
-	
+
 	$iis7 .= '&lt;rule name="caseshow"&gt;'."\r\n";
 	$iis7 .= '	&lt;match url="^(.*/)*'.$r_caseshow[0].'$" /&gt;'."\r\n";
 	$iis7 .= '	&lt;action type="Rewrite" url="{R:1}/'.$r_caseshow[3].'" /&gt;'."\r\n";
 	$iis7 .= '&lt;/rule&gt;'."\r\n";
-	
+
 	$iis7 .= '&lt;rule name="join"&gt;'."\r\n";
 	$iis7 .= '	&lt;match url="^(.*/)*'.$r_join[0].'$" /&gt;'."\r\n";
 	$iis7 .= '	&lt;action type="Rewrite" url="{R:1}/'.$r_join[3].'" /&gt;'."\r\n";
 	$iis7 .= '&lt;/rule&gt;'."\r\n";
-	
+
 	$iis7 .= '&lt;rule name="joinshow"&gt;'."\r\n";
 	$iis7 .= '	&lt;match url="^(.*/)*'.$r_joinshow[0].'$" /&gt;'."\r\n";
 	$iis7 .= '	&lt;action type="Rewrite" url="{R:1}/'.$r_joinshow[3].'" /&gt;'."\r\n";
 	$iis7 .= '&lt;/rule&gt;'."\r\n";
-	
+
 	$iis7 .= '&lt;rule name="message"&gt;'."\r\n";
 	$iis7 .= '	&lt;match url="^(.*/)*'.$r_message[0].'$" /&gt;'."\r\n";
 	$iis7 .= '	&lt;action type="Rewrite" url="{R:1}/'.$r_message[3].'" /&gt;'."\r\n";
 	$iis7 .= '&lt;/rule&gt;'."\r\n";
-	
+
 	$iis7 .= '&lt;rule name="contact"&gt;'."\r\n";
 	$iis7 .= '	&lt;match url="^(.*/)*'.$r_contact[0].'$" /&gt;'."\r\n";
 	$iis7 .= '	&lt;action type="Rewrite" url="{R:1}/'.$r_contact[3].'" /&gt;'."\r\n";
 	$iis7 .= '&lt;/rule&gt;'."\r\n";
-	
+
 	$iis7 .= '&lt;rule name="soft"&gt;'."\r\n";
 	$iis7 .= '	&lt;match url="^(.*/)*'.$r_soft[0].'$" /&gt;'."\r\n";
 	$iis7 .= '	&lt;action type="Rewrite" url="{R:1}/'.$r_soft[3].'" /&gt;'."\r\n";
 	$iis7 .= '&lt;/rule&gt;'."\r\n";
-	
+
 	$iis7 .= '&lt;rule name="softshow"&gt;'."\r\n";
 	$iis7 .= '	&lt;match url="^(.*/)*'.$r_softshow[0].'$" /&gt;'."\r\n";
 	$iis7 .= '	&lt;action type="Rewrite" url="{R:1}/'.$r_softshow[3].'" /&gt;'."\r\n";
 	$iis7 .= '&lt;/rule&gt;'."\r\n";
-	
+
 	$iis7 .= '&lt;rule name="goods"&gt;'."\r\n";
 	$iis7 .= '	&lt;match url="^(.*/)*'.$r_goods[0].'$" /&gt;'."\r\n";
 	$iis7 .= '	&lt;action type="Rewrite" url="{R:1}/'.$r_goods[3].'" /&gt;'."\r\n";
 	$iis7 .= '&lt;/rule&gt;'."\r\n";
-	
+
 	$iis7 .= '&lt;rule name="goodsshow"&gt;'."\r\n";
 	$iis7 .= '	&lt;match url="^(.*/)*'.$r_goodsshow[0].'$" /&gt;'."\r\n";
 	$iis7 .= '	&lt;action type="Rewrite" url="{R:1}/'.$r_goodsshow[3].'" /&gt;'."\r\n";
 	$iis7 .= '&lt;/rule&gt;'."\r\n";
-	
+
 	$iis7 .= '&lt;rule name="vote"&gt;'."\r\n";
 	$iis7 .= '	&lt;match url="^(.*/)*'.$r_vote[0].'$" /&gt;'."\r\n";
 	$iis7 .= '	&lt;action type="Rewrite" url="{R:1}/'.$r_vote[3].'" /&gt;'."\r\n";
@@ -402,7 +402,7 @@ function RewriteURL()
 	$nginx .= 'rewrite ^([^\.]*)/'.$r_vote[0].'$ $1/'.$r_vote[4].' last;'."\r\n";
 	$nginx .= 'rewrite ^([^\.]*)/'.$r_custom[0].'$ $1/'.$r_custom[4].' last;'."\r\n";
 
-	
+
 	/*
 	 * 读取rewriteurl.html
 	 * 进行标记替换
@@ -461,7 +461,7 @@ if($action == 'add')
 		ShowMsg('变量名不能为空并必须为[a-z_]组成！', $gourl);
 		exit();
 	}
-	
+
 	//链接前缀
 	$varname = 'cfg_'.$varname;
 

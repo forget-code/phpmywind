@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-5 11:13:14
 person: Feng/Karson
 **************************
@@ -12,7 +12,7 @@ person: Feng/Karson
 /**
  * 获取指定应用的用户UID
  * @param string $app 应用名称 renren/weibo/qq 默认renren
- * @return mixed 
+ * @return mixed
  */
 function get_app_uid($app = 'renren') {
     $uid = 0;
@@ -86,7 +86,7 @@ function go($url) {
 /**
  * 判断应用是否已经登录
  * @param string $app 应用名称 renren/weibo/qq 默认renren
- * @return bool 
+ * @return bool
  */
 function check_app_login($app = 'renren') {
     if (!in_array($app, array('renren', 'weibo', 'qq')))

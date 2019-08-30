@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-31 21:58:06
 person: Feng
 **************************
@@ -40,7 +40,7 @@ function Info($cid=0, $num=0, $gourl='')
 	{
 		$contstr .= '网站资料更新中...';
 	}
-	
+
 	return $contstr;
 }
 
@@ -65,10 +65,10 @@ function GetContPage($content)
 	{
 		$contarr   = explode($nextpage, $content);
 		$totalpage = count($contarr);
-	
+
 		if(!isset($_GET['page']) || !intval($_GET['page']) || $_GET['page'] > $totalpage) $page = 1;
 		else $page = $_GET['page'];
-	
+
 		//输出内容
 		$contstr .= $contarr[$page-1];
 
@@ -90,9 +90,9 @@ function GetContPage($content)
 
 					//伪静态设置
 					if($cfg_isreurl != 'Y')
-						$query_strs .= $query_str_arr[0].'='.$query_str_arr[1].'&';		
+						$query_strs .= $query_str_arr[0].'='.$query_str_arr[1].'&';
 					else
-						$query_strs .= '-'.$query_str_arr[1];	
+						$query_strs .= '-'.$query_str_arr[1];
 				}
 			}
 
@@ -123,7 +123,7 @@ function GetContPage($content)
 			//获取除页码以外的参数
 			$nowurl      = $request_str.ltrim($nowurl,'?');
 		}
-		
+
 		$previous = $page - 1;
 		if($totalpage == $page)
 			$next = $page;
@@ -213,7 +213,7 @@ function GetContPage($content)
 function InfoPic($cid=0)
 {
 	global $dosql;
-	
+
 	$r = $dosql->GetOne("SELECT `picurl` FROM `#@__info` WHERE `classid`=$cid");
 	if(isset($r) && is_array($r))
 	{
@@ -271,36 +271,36 @@ function GetHeader($sid=1,$cid=0,$id=0,$str='')
 		if(!empty($cid) && !empty($id))
 		{
 			$r = $dosql->GetOne("SELECT * FROM `#@__infoclass` WHERE `id`=$cid");
-	
+
 			if(isset($r['infotype']))
 			{
 				if($r['infotype'] == 1)
 					$tbname = '#@__infolist';
-	
+
 				else if($r['infotype'] == 2)
 					$tbname = '#@__infoimg';
-	
+
 				else if($r['infotype'] == 3)
 					$tbname = '#@__soft';
-	
+
 				else if($r['infotype'] == 4)
 					$tbname = '#@__goods';
-				
+
 				else
 					$tbname = '#@__infolist';
 
 
 				//获取栏目信息
 				$r2 = $dosql->GetOne("SELECT * FROM `$tbname` WHERE `id`=$id");
-			
+
 				$header_str = '<title>';
-			
+
 				if(isset($r2['title']))
 					$header_str .= $r2['title'].' - ';
-			
+
 				if(isset($r['classname']))
 					$header_str .= $r['classname'];
-			
+
 				$header_str .= ' - '.$cfg_webname.'</title>'."\n";
 				$header_str .= '<meta name="generator" content="'.$cfg_generator.'" />'."\n";
 				$header_str .= '<meta name="author" content="'.$cfg_author.'" />'."\n";
@@ -310,7 +310,7 @@ function GetHeader($sid=1,$cid=0,$id=0,$str='')
 					$header_str .= $r2['keywords'];
 				else
 					$header_str .= $cfg_keyword;
-			
+
 				$header_str .= '" />'."\n";
 				$header_str .= '<meta name="description" content="';
 
@@ -318,7 +318,7 @@ function GetHeader($sid=1,$cid=0,$id=0,$str='')
 					$header_str .= $r2['description'];
 				else
 					$header_str .= $cfg_description;
-			
+
 				$header_str .= '" />'."\n";
 			}
 			else
@@ -326,26 +326,26 @@ function GetHeader($sid=1,$cid=0,$id=0,$str='')
 				return '';
 			}
 		}
-		
+
 		//显示栏目信息
 		else if(!empty($cid))
 		{
 			$r = $dosql->GetOne("SELECT * FROM `#@__infoclass` WHERE `id`=$cid");
-	
+
 			$header_str = '<title>';
-	
+
 			if(!empty($r['seotitle']))
 				$header_str .= $r['seotitle'];
 			else if(!empty($r['classname']))
 				$header_str .= $r['classname'].' - '.$cfg_webname;
 			else
 				$header_str .= $cfg_webname;
-	
+
 			$header_str .= '</title>'."\n";
 			$header_str .= '<meta name="generator" content="'.$cfg_generator.'" />'."\n";
 			$header_str .= '<meta name="author" content="'.$cfg_author.'" />'."\n";
 			$header_str .= '<meta name="keywords" content="';
-			
+
 			if(!empty($r['keywords']))
 				$header_str .= $r['keywords'];
 			else
@@ -353,15 +353,15 @@ function GetHeader($sid=1,$cid=0,$id=0,$str='')
 
 			$header_str .= '" />'."\n";
 			$header_str .= '<meta name="description" content="';
-			
+
 			if(!empty($r['description']))
 				$header_str .= $r['description'];
 			else
 				$header_str .= $cfg_description;
-		
+
 			$header_str .= '" />'."\n";
 		}
-		
+
 		//显示站点信息
 		else
 		{
@@ -377,7 +377,7 @@ function GetHeader($sid=1,$cid=0,$id=0,$str='')
 			$header_str .= '<meta name="description" content="'.$cfg_description.'" />'."\n";
 		}
 	}
-	
+
 	return $header_str;
 }
 
@@ -425,7 +425,7 @@ function GetPosStr($cid=0,$id=0,$sign='&nbsp;&gt;&nbsp;')
 	//如果cid为空，获取串，否则视为首页
 	if(!empty($cid))
 	{
-		
+
 		//获取当前栏目信息
 		$r = $dosql->GetOne("SELECT * FROM `#@__infoclass` where `id`=$cid");
 		if(empty($r['parentstr']))
@@ -438,7 +438,7 @@ function GetPosStr($cid=0,$id=0,$sign='&nbsp;&gt;&nbsp;')
 			if($r['parentstr'] != '0,')
 			{
 				$pid_arr = explode(',', $r['parentstr']);
-		
+
 				foreach($pid_arr as $v)
 				{
 					if(!empty($v))
@@ -462,7 +462,7 @@ function GetPosStr($cid=0,$id=0,$sign='&nbsp;&gt;&nbsp;')
 						return $pos_str.$sign.'<a href="'.$r['linkurl'].'">'.$r['classname'].'</a>'.$sign.'正文';
 					else
 						return $pos_str.$sign.$r['classname'].$sign.'正文';
-					
+
 				}
 				else
 				{
@@ -518,7 +518,7 @@ function GetQQ()
 			}
 		}
 		$re_str .= '</div></div>';
-		
+
 		return $re_str;
 	}
 }
@@ -536,7 +536,7 @@ function GetTopID($str,$i=1)
 		$ids = explode(',', $str);
 		$topid = isset($ids[$i]) ? $ids[$i] : '';
 	}
-	
+
 	return $topid;
 }
 
@@ -560,7 +560,7 @@ function GetNav($pid=1)
 			$gourl = $row['linkurl'];
 		else
 			$gourl = $row['relinkurl'];
-		
+
 		if($row['picurl'] != '')
 			$classname = '<img src="'.$row['picurl'].'" />';
 		else
@@ -606,7 +606,7 @@ function GetSubNav($id)
 
 
 		$str .= '<li><a href="'.$gourl.'"';
-		
+
 		if($row['target'] != '')
 			$str .= ' target="'.$row['target'].'"';
 
@@ -629,7 +629,7 @@ function GetSubNav($id)
  *
  * @access  public
  * @param   $id   int  碎片ID
- * @param   $t    int  调用的内容 0为内容 1为标识名称 2为缩略图 3为跳转连接 
+ * @param   $t    int  调用的内容 0为内容 1为标识名称 2为缩略图 3为跳转连接
  * @return  string     返回碎片缩略图地址
  */
 function GetFragment($id=0,$t=0)

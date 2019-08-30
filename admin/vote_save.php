@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2012-8-2 14:38:42
 person: Feng
 **************************
@@ -125,7 +125,7 @@ if($action == 'delopt')
 {
 	$dosql->ExecNoneQuery("DELETE FROM `#@__votedata` WHERE optionid=".$option_id);
 	$dosql->ExecNoneQuery("DELETE FROM `#@__voteoption` WHERE id=".$option_id);
-	
+
 	header("location:vote_update.php?id=$id");
 	exit();
 }

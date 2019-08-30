@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-6-18 22:27:23
 person: Feng
 **************************
@@ -29,7 +29,7 @@ if(!isset($_SESSION)) session_start();
 
 
 //设置当前站点
-if(!empty($_SESSION['siteid']) && 
+if(!empty($_SESSION['siteid']) &&
    !empty($_SESSION['sitekey']))
 {
 	$cfg_siteid  = $_SESSION['siteid'];
@@ -40,8 +40,8 @@ else
 	$cfg_siteid  = 1;
 	$cfg_sitekey = '';
 }
-		
-	
+
+
 require_once(MOBILE_INC.'/admin.func.php');
 require_once(MOBILE_INC.'/page.class.php');
 
@@ -57,7 +57,7 @@ if($c == 'index' || $c == 'web_config' || $c == 'infoclass' ||
 	{
 		$_SESSION = array();
 		session_destroy();
-	
+
 		if(strstr(GetCurUrl(), '/plugin/') or
 		   strstr(GetCurUrl(), '/editor/'))
 		{
@@ -71,7 +71,7 @@ if($c == 'index' || $c == 'web_config' || $c == 'infoclass' ||
 		{
 			echo '<script type="text/javascript">window.top.location.href="login.php";</script>';
 		}
-	
+
 		exit();
 	}
 }

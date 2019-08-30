@@ -96,9 +96,9 @@ p strong{color:#00F;font-weight:normal;}
 	[classname] => 新闻动态
 	[parentid] => 0
 	[parentstr] => 0,
-	[linkurl] => 
-	[picurl] => 
-	[content] => 
+	[linkurl] =>
+	[picurl] =>
+	[content] =>
 	[orderid] => 3
 	[checkinfo] => true
 	[infotype] => 1
@@ -302,6 +302,6 @@ p strong{color:#00F;font-weight:normal;}
 	<div class="hr_10"></div>
 	<p>　　更多关于我们的信息可访问 <a href="http://phpmywind.com/" target="_blank">http://phpmywind.com</a></p>
 </div>
-<div class="footer">© 2014 phpMyWind.com</div>
+<div class="footer">© 2015 phpMyWind.com</div>
 </body>
 </html>

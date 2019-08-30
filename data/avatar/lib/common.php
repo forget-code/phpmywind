@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2012-10-22 16:08:34
 person: Adu
 **************************
@@ -18,10 +18,10 @@ person: Adu
  */
 
 class common{
-    
+
     //存储对象实例
     protected static $_objectInstance = array();
-    
+
     /**
      * dz经典加解密函数
      * 来源：Discuz! 7.0
@@ -94,7 +94,7 @@ class common{
 
     }
 
-    
+
     /**
      * 获取$_GET/$_POST/$_COOKIE/$_REQUEST数组的指定索引变量(ok)
      * 来源：Ucenter
@@ -113,12 +113,12 @@ class common{
         }
         return isset($var[$k]) ? $var[$k] : NULL;
     }
-    
+
     /**
      * 转义处理，改动自daddslashes函数(ok)
      * 来源：Ucenter
      * 依赖性：需要修改才能独立使用
-     * 
+     *
      * @param string $string
      * @param int $force
      * @param bool $strip
@@ -141,20 +141,20 @@ class common{
         }
         return $string;
     }
-    
+
     /**
      * 返回文件的扩展名
      * 来源：Discuz!
      * 依赖性：可独立提取使用
-     * 
+     *
      * @param string $filename 文件名
      * @return string
      */
     public static function fileext($filename) {
         return trim(substr(strrchr($filename, '.'), 1, 10));
     }
-    
-    
+
+
     /**
      * 获取指定对象或者指定索引对象的实例。没有则新建一个并且存储起来。
      *

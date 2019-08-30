@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-4-20 16:27:40
 person: Feng
 **************************
@@ -94,7 +94,7 @@ if($action == 'save')
 	{
 		setcookie('shoppingcart', '', time()-3600);
 		setcookie('orderinfo',    '', time()-3600);
-		
+
 		if($orderarr['paymode'] == 1)
 		{
 			header('location:orderpay.php?id='.$dosql->GetLastID());
@@ -120,13 +120,13 @@ if($action == 'save')
 <body>
 <!-- header-->
 <?php require_once('header.php'); ?>
-<!-- /header--> 
+<!-- /header-->
 <!-- banner-->
 <div class="subBanner"> <img src="templates/default/images/banner-ir.png" /> </div>
-<!-- /banner--> 
+<!-- /banner-->
 <!-- notice-->
 <div class="subnotice"><strong>网站公告：</strong> <?php echo Info(1); ?> </div>
-<!-- /notice--> 
+<!-- /notice-->
 <!-- mainbody-->
 <div class="subBody">
 	<div class="subTitle" style="margin:0;"> <span class="catname shopcart">订单确认</span>
@@ -159,10 +159,10 @@ if($action == 'save')
 
 				//计算订单总重
 				$totalweight += $r['weight'] * $goods[1];
-	
+
 				//输出商品名称
-				echo '<a href="goodsshow.php?cid='.$r['classid'].'&tid='.$r['typeid'].'&id='.$r['id'].'" class="title" target="_blank">'.$r['title'].'</a>'; 
-	
+				echo '<a href="goodsshow.php?cid='.$r['classid'].'&tid='.$r['typeid'].'&id='.$r['id'].'" class="title" target="_blank">'.$r['title'].'</a>';
+
 				//输出选中属性
 				foreach($goods[2] as $v)
 				{
@@ -202,18 +202,18 @@ if($action == 'save')
 				<td height="30" align="right">地　址：</td>
 				<td><?php
 
-					$r = $dosql->GetOne("SELECT `dataname` FROM `#@__cascadedata` WHERE `datagroup`='area' AND level=0 AND `datavalue`='".$orderinfo['postarea_prov'])."'";
+					$r = $dosql->GetOne("SELECT `dataname` FROM `#@__cascadedata` WHERE `datagroup`='area' AND level=0 AND `datavalue`='".$orderinfo['postarea_prov']."'");
 					echo $r['dataname'];
-					
+
 					if($orderinfo['postarea_city'] != '-1')
 					{
-						$r = $dosql->GetOne("SELECT `dataname` FROM `#@__cascadedata` WHERE `datagroup`='area' AND level=1 AND `datavalue`='".$orderinfo['postarea_city'])."'";
+						$r = $dosql->GetOne("SELECT `dataname` FROM `#@__cascadedata` WHERE `datagroup`='area' AND level=1 AND `datavalue`='".$orderinfo['postarea_city']."'");
 						echo ' - '.$r['dataname'];
 					}
-					
+
 					if($orderinfo['postarea_country'] != '-1')
 					{
-						$r = $dosql->GetOne("SELECT `dataname` FROM `#@__cascadedata` WHERE `datagroup`='area' AND level=2 AND `datavalue`='".$orderinfo['postarea_country'])."'";
+						$r = $dosql->GetOne("SELECT `dataname` FROM `#@__cascadedata` WHERE `datagroup`='area' AND level=2 AND `datavalue`='".$orderinfo['postarea_country']."'");
 						echo ' - '.$r['dataname'];
 					}
 					?></td>
@@ -287,7 +287,7 @@ function GetOrderID($tbname)
 	return $orderid;
 }
 ?>
-<!-- /mainbody--> 
+<!-- /mainbody-->
 <!-- footer-->
 <?php require_once('footer.php'); ?>
 <!-- /footer-->

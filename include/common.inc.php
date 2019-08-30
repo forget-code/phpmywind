@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-30 12:57:19
 person: Feng
 **************************
@@ -69,7 +69,7 @@ if($cfg_mysql_type == 'mysqli' &&
    require_once(PHPMYWIND_INC.'/mysqli.class.php');
 else
    require_once(PHPMYWIND_INC.'/mysql.class.php');
-   
+
 
 //引入语言包
 
@@ -89,8 +89,8 @@ $cfg_media_dir = PHPMYWIND_UPLOAD.'/media';
 
 
 //系统版本号
-$cfg_vernum  = '5.2 Beta';
-$cfg_vertime = '201412281230';
+$cfg_vernum  = '5.3 Beta';
+$cfg_vertime = '20150913221909';
 
 
 //设置默认时区

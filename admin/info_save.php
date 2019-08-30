@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-30 16:49:43
 person: Feng
 **************************
@@ -73,7 +73,7 @@ if($action == 'update')
 					}
 					else
 					{
-						$v = $_POST[$row['fieldname']];	
+						$v = $_POST[$row['fieldname']];
 					}
 				}
 			}
@@ -90,22 +90,22 @@ if($action == 'update')
 					exit();
 				}
 			}
-	
+
 			if($row['fieldtype'] == 'datetime')
 			{
 				$v = GetMkTime($v);
 			}
-			
+
 			if($row['fieldtype'] == 'fileall')
 			{
 				$vTxt = isset($_POST[$row['fieldname'].'_txt']) ? $_POST[$row['fieldname'].'_txt'] : '';
-	
+
 				if(is_array($v) &&
 				   is_array($vTxt))
 				{
 					$vNum = count($v);
 					$vTmp = '';
-			
+
 					for($i=0;$i<$vNum;$i++)
 					{
 						if(@!get_magic_quotes_gpc())
@@ -117,16 +117,16 @@ if($action == 'update')
 							$vTmp[] = $v[$i].','.$vTxt[$i];
 						}
 					}
-					
+
 					$v = serialize($vTmp);
 				}
 			}
-			
+
 			if($row['fieldtype'] == 'checkbox')
 			{
 				@$v = implode(',',$v);
 			}
-	
+
 			$fieldname  .= ", $k";
 			$fieldvalue .= ", '$v'";
 			$fieldstr   .= ", $k='$v'";

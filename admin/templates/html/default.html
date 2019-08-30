@@ -16,7 +16,7 @@ $fdir  = PHPMYWIND_DATA.'/cache/auth/';
 $fname = 'auth_'.$cfg_auth_key.'.php';
 
 
-		
+
 if(file_exists($fdir.$fname))
 {
 	echo 'url = "'.$_SERVER['HTTP_HOST'].'";';
@@ -101,7 +101,7 @@ else
 					$light = 'class="on"';
 				else
 					$light = '';
-		
+
 				echo '<a href="javascript:;" id="'.$row['sitekey'].'" onclick="SelSite(\''.$row['sitekey'].'\')" '.$light.' title="切换到'.$row['sitename'].'">'.$row['sitename'].'</a>';
 			}
 		}
@@ -306,7 +306,7 @@ else
 			<span class="note">&nbsp;</span>
 		</div>
 	</div>
-	<div class="copyright">© 2014 phpMyWind.com</div>
+	<div class="copyright">© 2015 phpMyWind.com</div>
 </div>
 </body>
 </html>

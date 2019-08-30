@@ -1,7 +1,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2013-1-23 9:28:39
 person: Feng
 **************************
@@ -25,7 +25,7 @@ function colorpicker(showid,fun,id2)
 				colorTable=colorTable+'<td width="11" onmouseover="onmouseover_color(\''+ColorHex[j]+ColorHex[j]+ColorHex[j]+'\')" onclick="select_color(\''+showid+'\',\''+ColorHex[j]+ColorHex[j]+ColorHex[j]+'\',\''+fun+'\',\''+id2+'\')" style="background-color:#'+ColorHex[j]+ColorHex[j]+ColorHex[j]+'">'
 			}
 			else{
-				colorTable=colorTable+'<td width="11" onmouseover="onmouseover_color(\''+SpColorHex[j]+'\')" onclick="select_color(\''+showid+'\',\''+SpColorHex[j]+'\',\''+fun+'\',\''+id2+'\')" style="background-color:#'+SpColorHex[j]+'">'} 
+				colorTable=colorTable+'<td width="11" onmouseover="onmouseover_color(\''+SpColorHex[j]+'\')" onclick="select_color(\''+showid+'\',\''+SpColorHex[j]+'\',\''+fun+'\',\''+id2+'\')" style="background-color:#'+SpColorHex[j]+'">'}
 			colorTable=colorTable+'<td width="12" onmouseover="onmouseover_color(\'000\')" onclick="select_color(\''+showid+'\',\'000\',\''+fun+'\',\''+id2+'\')" style="background-color:#000">'
 			for(k=0; k<3; k++){
 				for(l=0; l<6; l++){

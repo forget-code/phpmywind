@@ -2,7 +2,7 @@
 
 /*
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-31 21:59:36
 person: Feng
 **************************
@@ -73,7 +73,7 @@ function CategoryType($type=0, $id=0, $i=0)
 			{
 				$r2 = $dosql->GetOne("SELECT * FROM `#@__adminprivacy` WHERE `groupid`=".$cfg_adminlevel." AND `model`='category' AND `classid`=".$row['id']." AND `action`='add'");
 			}
-	
+
 			//管理组非超级管理员，判断是否有权操作栏目
 			if($row['infotype'] != $type or empty($r2))
 				$disabled = ' disabled="disabled"';
@@ -153,7 +153,7 @@ function GetAllType($tbname='', $tbname2='', $colname='', $id=0, $i=0)
 
 		for($n=1; $n<$i; $n++)
 			echo '&nbsp;&nbsp;&nbsp;&nbsp;';
-	
+
 		if($row['parentid'] != 0)
 			echo '|- ';
 
@@ -259,7 +259,7 @@ function GetMgrAjaxType($tbname='', $type='', $id=0, $i=0)
 {
 	global $dosql,$cfg_siteid, $cfg_adminlevel;
 
-	
+
 	//权限验证
 	if($cfg_adminlevel != 1)
 	{
@@ -288,7 +288,7 @@ function GetMgrAjaxType($tbname='', $type='', $id=0, $i=0)
 		//如前只有商品分类选择使用$type为空
 		if(!empty($type))
 		{
-			
+
 			if($row['infotype'] == $type)
 			{
 				//判断是否存在查看权限
@@ -435,7 +435,7 @@ function GetTopID($str, $i=1)
 		$ids = explode(',', $str);
 		$topid = isset($ids[$i]) ? $ids[$i] : '';
 	}
-	
+
 	return $topid;
 }
 
@@ -469,8 +469,8 @@ function GetContFile($body)
 
 
         $htd->OpenUrl($v);
-		
-		
+
+
         $type = $htd->GetHead('content-type');
 
 
@@ -501,7 +501,7 @@ function GetContFile($body)
 			$fp = fopen($upload_dir.'/index.htm', 'w');
 			fclose($fp);
 		}
-		
+
 		//上传文件名称
 		$filename = time()+rand(1,9999).'.'.$tempfile_ext;
 
@@ -583,7 +583,7 @@ function GetRemPic($url)
 		$ymd = date('Ymd');
 		$upload_url .= '/'.$ymd;
 		$upload_dir .= '/'.$ymd;
-	
+
 		if(!file_exists($upload_dir))
 		{
 			mkdir($upload_dir);
@@ -679,7 +679,7 @@ function ContAutoPage($body, $spsize, $sptag='<hr style="page-break-after:always
     {
         $body .= $pagebody;
     }
-	
+
     return _RunMagicQuotes($body);
 }
 
@@ -709,15 +709,15 @@ function GetDiyField($type='',$id=0,$row='')
 				$fieldvalue = $row[$r['fieldname']];
 			else
 				$fieldvalue = '';
-	
-	
+
+
 			$reStr .= '<table width="100%" border="0" cellspacing="0" cellpadding="0" class="diyfieldtb"><tr';
 			if($r['fieldtype'] == 'mediumtext')
 			{
 				$reStr .= ' height="304"';
 			}
 			$reStr .= '><td height="40" align="right" width="25%">'.$r['fieldtitle'].'：</td><td width="75%">';
-	
+
 
 			//文本框
 			if($r['fieldtype']=='varchar' or $r['fieldtype']=='int' or $r['fieldtype']=='decimal')
@@ -729,8 +729,8 @@ function GetDiyField($type='',$id=0,$row='')
 				}
 				$reStr .= '<span class="cnote">'.$r['fielddesc'].'</span>';
 			}
-	
-	
+
+
 			//多行文本
 			else if($r['fieldtype'] == 'text')
 			{
@@ -741,8 +741,8 @@ function GetDiyField($type='',$id=0,$row='')
 				}
 				$reStr .= '<span class="cnote">'.$r['fielddesc'].'</span>';
 			}
-	
-	
+
+
 			//单选按钮
 			else if($r['fieldtype'] == 'radio')
 			{
@@ -755,7 +755,7 @@ function GetDiyField($type='',$id=0,$row='')
 						{
 							$fieldsel_val = explode('=', $fieldsel_arr);
 							$fieldsel_val[1] = isset($fieldsel_val[1]) ? $fieldsel_val[1] : '';
-		
+
 							if($fieldvalue != '')
 							{
 								if($fieldsel_val[1] == $fieldvalue)
@@ -770,23 +770,23 @@ function GetDiyField($type='',$id=0,$row='')
 								else
 									$checked = '';
 							}
-		
+
 							$reStr .= '<input type="radio" name="'.$r['fieldname'].'" id="'.$r['fieldname'].'" value="'.$fieldsel_val[1].'" '.$checked.' />&nbsp;'.$fieldsel_val[0];
 							if($k < (count($fieldsel)-1)) $reStr .= '&nbsp;&nbsp;&nbsp;';
 						}
 					}
-	
+
 					if(!empty($r['fieldcheck']))
 					{
 						$reStr .= '&nbsp;<span class="maroon">*</span>';
 					}
-	
+
 					$reStr .= '<span class="cnote">'.$r['fielddesc'].'</span>';
 				}
-				
+
 			}
-	
-	
+
+
 			//多选按钮
 			else if($r['fieldtype'] == 'checkbox')
 			{
@@ -799,7 +799,7 @@ function GetDiyField($type='',$id=0,$row='')
 						{
 							$fieldsel_val = explode('=', $fieldsel_arr);
 							$fieldsel_val[1] = isset($fieldsel_val[1]) ? $fieldsel_val[1] : '';
-		
+
 							if($fieldvalue != '')
 							{
 								$fileall = explode(',',$fieldvalue);
@@ -822,7 +822,7 @@ function GetDiyField($type='',$id=0,$row='')
 							{
 								$checked = '';
 							}
-		
+
 							$reStr .= '<input type="checkbox" name="'.$r['fieldname'].'[]" id="'.$r['fieldname'].'[]" value="'.$fieldsel_val[1].'" '.$checked.' />&nbsp;'.$fieldsel_val[0];
 							if($k < (count($fieldsel)-1)) $reStr .= '&nbsp;&nbsp;&nbsp;';
 						}
@@ -833,16 +833,16 @@ function GetDiyField($type='',$id=0,$row='')
 					}
 					$reStr .= '<span class="cnote">'.$r['fielddesc'].'</span>';
 				}
-	
+
 			}
-	
+
 
 			//下拉菜单
 			else if($r['fieldtype'] == 'select')
 			{
 				if(!empty($r['fieldsel']))
 				{
-	
+
 					$reStr .= '<select name="'.$r['fieldname'].'" id="'.$r['fieldname'].'">';
 					$fieldsel = explode(',', $r['fieldsel']);
 					foreach($fieldsel as $k=>$fieldsel_arr)
@@ -851,7 +851,7 @@ function GetDiyField($type='',$id=0,$row='')
 						{
 							$fieldsel_val = explode('=', $fieldsel_arr);
 							$fieldsel_val[1] = isset($fieldsel_val[1]) ? $fieldsel_val[1] : '';
-		
+
 							if($fieldvalue != '')
 							{
 								if($fieldsel_val[1] == $fieldvalue)
@@ -863,7 +863,7 @@ function GetDiyField($type='',$id=0,$row='')
 							{
 								$selected = '';
 							}
-		
+
 							$fieldsel_val = explode('=', $fieldsel_arr);
 							$reStr .= '<option name="'.$r['fieldname'].'" id="'.$r['fieldname'].'" value="'.$fieldsel_val[1].'"'.$selected.'>'.$fieldsel_val[0].'</option>';
 							if($k < (count($fieldsel)-1)) $reStr .= '&nbsp;&nbsp;&nbsp;';
@@ -877,8 +877,8 @@ function GetDiyField($type='',$id=0,$row='')
 					$reStr .= '<span class="cnote">'.$r['fielddesc'].'</span>';
 				}
 			}
-	
-	
+
+
 			//单个附件
 			else if($r['fieldtype'] == 'file')
 			{
@@ -893,8 +893,8 @@ function GetDiyField($type='',$id=0,$row='')
 					$reStr .= '<span class="cnote">'.$r['fielddesc'].'</span>';
 				}
 			}
-	
-	
+
+
 			//多个附件
 			else if($r['fieldtype'] == 'fileall')
 			{
@@ -916,8 +916,8 @@ function GetDiyField($type='',$id=0,$row='')
 				}
 				$reStr .= '</ul></fieldset>';
 			}
-	
-	
+
+
 			//日期时间
 			else if($r['fieldtype'] == 'datetime')
 			{
@@ -925,26 +925,26 @@ function GetDiyField($type='',$id=0,$row='')
 					$dtime = GetDateTime($fieldvalue);
 				else
 					$dtime = GetDateTime(time());
-	
+
 				$reStr .= '<input type="text" name="'.$r['fieldname'].'" id="'.$r['fieldname'].'" class="inputms" value="'.$dtime .'" readonly="readonly" />';
-	
+
 				if(!empty($r['fieldcheck']))
 				{
 					$reStr .= '&nbsp;<span class="maroon">*</span>';
 				}
-	
+
 				$reStr .= '<span class="cnote">'.$r['fielddesc'].'</span>';
 				$reStr .= '<script type="text/javascript">Calendar.setup({inputField:"'.$r['fieldname'].'",ifFormat:"%Y-%m-%d %H:%M:%S",showsTime:true,timeFormat:"24"});</script>';
 			}
-	
-	
+
+
 			//编辑器模式
 			else if($r['fieldtype'] == 'mediumtext')
 			{
 				$reStr .= '<textarea name="'.$r['fieldname'].'" id="'.$r['fieldname'].'" class="kindeditor">'.$fieldvalue.'</textarea>';
 				$reStr .= '<script type="text/javascript">var editor;KindEditor.ready(function(K) {editor = K.create(\'textarea[name="'.$r['fieldname'].'"]\', {allowFileManager:true,width:\'667px\',height:\'280px\',extraFileUploadParams:{sessionid:\''.session_id().'\'}});});</script>';
 			}
-			
+
 			$reStr .= '</td></tr></table>';
 		}
 	}
@@ -1035,7 +1035,7 @@ function ImageResize($srcfile, $towidth, $toheight, $tofile='', $issave=TRUE, $i
 {
 
 	global $cfg_imgresize;
-	
+
 
 	//如果不需要存储到它处
 	//直接覆盖原来文件位置
@@ -1043,7 +1043,7 @@ function ImageResize($srcfile, $towidth, $toheight, $tofile='', $issave=TRUE, $i
 
 	//获取图片信息
 	$srcinfo = @getimagesize($srcfile);
-	
+
 	//检测图片扩展名
 	if($srcinfo[2] != 1 &&
 	   $srcinfo[2] != 2 &&
@@ -1117,7 +1117,7 @@ function ImageResize($srcfile, $towidth, $toheight, $tofile='', $issave=TRUE, $i
 
 			//创建真彩色图像
 			$newimg = imagecreatetruecolor($towidth, $toheight);
-			
+
 			//缩放并合并图像
 			if(!@imagecopyresampled($newimg, $imgfrom, ($towidth-$newwidth)/2, ($toheight-$newheight)/2, 0, 0, $newwidth, $newheight, $imgwidth, $imgheight))
 			{
@@ -1162,7 +1162,7 @@ function ImageResize($srcfile, $towidth, $toheight, $tofile='', $issave=TRUE, $i
 		{
 			imagedestroy($newimg);
 			imagedestroy($imgfrom);
-			
+
 			return TRUE;
 		}
 
@@ -1172,10 +1172,10 @@ function ImageResize($srcfile, $towidth, $toheight, $tofile='', $issave=TRUE, $i
 	{
 		//目标图片比例
 		$toratio  = $towidth / $toheight;
-	
+
 		//当前图片比例
 		$imgratio = $imgwidth / $imgheight;
-	
+
 		//如果目标比例大于当前比例定义高度
 		if($toratio > $imgratio)
 		{
@@ -1187,7 +1187,7 @@ function ImageResize($srcfile, $towidth, $toheight, $tofile='', $issave=TRUE, $i
 			$newheight = $towidth / $imgratio;
 			$newwidth  = $towidth;
 		}
-	
+
 		//匹配最终宽高
 		if($newwidth > $towidth)
 			$newheight = $towidth;
@@ -1280,7 +1280,7 @@ function IsModelPriv($m='')
 		//更新操作日志
 		SetSysEvent($m);
 	}
-	
+
 	//非超级管理员判断权限
 	else if($cfg_adminlevel != 1)
 	{
@@ -1302,12 +1302,12 @@ function IsModelPriv($m='')
 			exit();
 		}
 	}
-	
+
 	else
 	{
 		return FALSE;
 	}
-	
+
 }
 
 
@@ -1327,7 +1327,7 @@ function IsCategoryPriv($cid=0,$act='',$return='',$issave='1')
 			{
 				case 0:
 					$m = 'info';
-					break;  
+					break;
 				case 1:
 					$m = 'infolist';
 					break;
@@ -1345,16 +1345,16 @@ function IsCategoryPriv($cid=0,$act='',$return='',$issave='1')
 					if(isset($r2) && is_array($r2))
 						$m = $r2['modelname'];
 					else
-						$m = '';	
+						$m = '';
 			}
 
             if($issave == 1)
 				SetSysEvent($m,$cid,$act);
 		}
-		
-		return TRUE; 
+
+		return TRUE;
 	}
-	
+
 	//非超级管理员判断权限
 	else if($cfg_adminlevel != 1)
 	{
@@ -1369,7 +1369,7 @@ function IsCategoryPriv($cid=0,$act='',$return='',$issave='1')
 				{
 					case 0:
 						$m = 'info';
-						break;  
+						break;
 					case 1:
 						$m = 'infolist';
 						break;
@@ -1387,14 +1387,14 @@ function IsCategoryPriv($cid=0,$act='',$return='',$issave='1')
 						if(isset($r2) && is_array($r2))
 							$m = $r2['modelname'];
 						else
-							$m = '';	
+							$m = '';
 				}
-				
+
 				if($issave == 1)
 					SetSysEvent($m,$cid,$act);
 			}
-			
-			return TRUE; 
+
+			return TRUE;
 		}
 		else
 		{
@@ -1454,11 +1454,11 @@ function GetDiyFieldCatePriv($model, $cid)
 			$catepriv = explode(',', $row['catepriv']);
 			if(in_array($cid, $catepriv))
 			{
-				$str .= $row['id'] . ',';				
+				$str .= $row['id'] . ',';
 			}
 		}
 	}
-	
+
 	$str = rtrim($str, ',');
 	return $str;
 }

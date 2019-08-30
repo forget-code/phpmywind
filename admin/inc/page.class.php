@@ -4,7 +4,7 @@
  * 分页类
  *
 **************************
-(C)2010-2014 phpMyWind.com
+(C)2010-2015 phpMyWind.com
 update: 2014-5-31 21:54:19
 person: Feng
 **************************
@@ -15,7 +15,7 @@ $dopage = new Page();
 
 class Page
 {
-	
+
 	var $page;      //当前页码
 	var $totalpage; //总共页数
 	var $pagenum;   //每页记录数
@@ -30,7 +30,7 @@ class Page
     {
 		$this->__construct();
     }
-	
+
 	function Init()
     {
 		$this->page     = @$GLOBALS['page'];
@@ -76,7 +76,7 @@ class Page
 		{
 			//获取除page参数外的其他参数
 			$query_string = explode('&',$_SERVER["QUERY_STRING"]);
-		
+
 			if($query_string[0] != '')
 			{
 				$query_string_temp = '';
@@ -92,7 +92,7 @@ class Page
 						$query_string_temp .= $query_string2[0].'='.$query_string2[1].'&';
 					}
 				}
-		
+
 				$nowurl = '?'.$query_string_temp;
 			}
 			else
@@ -194,7 +194,7 @@ class Page
 			}
 			$pagetxt .= '</div>';
 		}
-		
+
 		return $pagetxt;
 	}
 
@@ -214,7 +214,7 @@ class Page
 		{
 			//获取除page参数外的其他参数
 			$query_string = explode('&',$_SERVER["QUERY_STRING"]);
-		
+
 			if($query_string[0] != '')
 			{
 				$query_string_temp = '';
@@ -230,7 +230,7 @@ class Page
 						$query_string_temp .= $query_string2[0].'='.$query_string2[1].'&';
 					}
 				}
-		
+
 				$nowurl = '?'.$query_string_temp;
 			}
 			else
@@ -265,7 +265,7 @@ class Page
 
 			//显示页码
 			$pagetxt .= '<a href="javascript:;" class="on">'.$this->page.'</a>';
-			
+
 
 			//下一页 最后页
 			if($this->page < $this->totalpage)
@@ -280,7 +280,7 @@ class Page
 			}
 			$pagetxt .= '</div>';
 		}
-		
+
 		return $pagetxt;
 	}
 
@@ -294,7 +294,7 @@ class Page
 
 		//上一页
 		$previous = $this->page - 1;
-	
+
 		//下一页
 		if($this->totalpage == $this->page)
 		{
@@ -310,10 +310,10 @@ class Page
 			$pagetxt = '<div class="pageText">共<span>'.$this->totalpage.'</span>页<span>'.$this->total.'</span>条记录</div>';
 		}
 		else
-		{	
+		{
 			//正常的分页链接
 			$pagetxt = '<div class="pageList">';
-			
+
 			//显示首页的裢接
 			if($this->page > 1)
 			{
@@ -325,7 +325,7 @@ class Page
 				$pagetxt .= '<a href="javascript:;">&lt;&lt;</a>';
 				$pagetxt .= '<a href="javascript:;">&lt;</a>';
 			}
-			
+
 			//如果分页小于10页则显示正常分页链接否则显示带省略号的分页链接
 			if($this->totalpage < 10)
 			{
@@ -350,14 +350,14 @@ class Page
 					$m = 1;
 					$b = 7;
 				}
-		
+
 				//如果页面大于前三页并且小于后三页则显示当前页前后各三页链接
 				if ($this->page>3 and $this->page<$this->totalpage-2)
 				{
 					$m = $this->page-3;
 					$b = $this->page+3;
 				}
-		
+
 				//如果页面为最后三页则显示最后7页链接
 				if($this->page==$this->totalpage or $this->page==$this->totalpage-1 or $this->page==$this->totalpage-2)
 				{
@@ -368,7 +368,7 @@ class Page
 				{
 					$pagetxt .= '<a href="javascript:;">...</a>';
 				}
-		
+
 				//显示数字页码
 				for($i=$m; $i <= $b; $i++)
 				{
@@ -398,14 +398,14 @@ class Page
 				$pagetxt .= '<a href="javascript:;">&gt;</a>';
 				$pagetxt .= '<a href="javascript:;">&gt;&gt;</a>';
 			}
-	
-			$pagetxt .= '</div>';  
+
+			$pagetxt .= '</div>';
 		}
-		
+
 		return $pagetxt;
 	}
-	
-	
+
+
 	//ajax分页
 	function AjaxPageSmall()
 	{
@@ -415,7 +415,7 @@ class Page
 
 		//上一页
 		$previous = $this->page - 1;
-	
+
 		//下一页
 		if($this->totalpage == $this->page)
 		{
@@ -431,10 +431,10 @@ class Page
 			$pagetxt = '<div class="pageText">共<span>'.$this->total.'</span>条记录</div>';
 		}
 		else
-		{	
+		{
 			//正常的分页链接
 			$pagetxt = '<div class="pageList">';
-			
+
 			//显示首页的裢接
 			if($this->page > 1)
 			{
@@ -446,7 +446,7 @@ class Page
 				$pagetxt .= '<a href="javascript:;">&lt;&lt;</a>';
 				$pagetxt .= '<a href="javascript:;">&lt;</a>';
 			}
-			
+
 			//显示页码
 			$pagetxt .= '<a href="javascript:;" class="on">'.$this->page.'</a>';
 
@@ -462,10 +462,10 @@ class Page
 				$pagetxt .= '<a href="javascript:;">&gt;</a>';
 				$pagetxt .= '<a href="javascript:;">&gt;&gt;</a>';
 			}
-	
-			$pagetxt .= '</div>';  
+
+			$pagetxt .= '</div>';
 		}
-		
+
 		return $pagetxt;
 	}
 }
