@@ -64,11 +64,9 @@ require_once(PHPMYWIND_INC.'/conn.inc.php');     //引入数据库类
 
 
 //引入数据库类
-if($cfg_mysql_type == 'mysqli' &&
-   function_exists('mysqli_init'))
-   require_once(PHPMYWIND_INC.'/mysqli.class.php');
-else
-   require_once(PHPMYWIND_INC.'/mysql.class.php');
+
+require_once(PHPMYWIND_INC.'/mysqli.class.php');
+
 
 
 //引入语言包
@@ -89,8 +87,8 @@ $cfg_media_dir = PHPMYWIND_UPLOAD.'/media';
 
 
 //系统版本号
-$cfg_vernum  = '5.3 Beta';
-$cfg_vertime = '20150913221909';
+$cfg_vernum  = '5.6 Beta';
+$cfg_vertime = '20190320135906';
 
 
 //设置默认时区

@@ -1,7 +1,7 @@
 <?php	if(!defined('IN_PHPMYWIND')) exit('Request Error!');
 
 $cfg_webname = '我的网站';
-$cfg_weburl = 'http://localhost';
+$cfg_weburl = 'http://phpmywind.net';
 $cfg_webpath = '';
 $cfg_author = '';
 $cfg_generator = 'PHPMyWind CMS';
@@ -20,7 +20,6 @@ $cfg_max_file_size = '2097152';
 $cfg_imgresize = 'Y';
 $cfg_countcode = '';
 $cfg_qqcode = '';
-$cfg_mysql_type = 'mysqli';
 $cfg_pagenum = '20';
 $cfg_timezone = '8';
 $cfg_mobile = 'Y';
@@ -50,7 +49,7 @@ $cfg_reurl_goods = '{goods}-{cid}-{tid}-{page}.html';
 $cfg_reurl_goodsshow = '{goodsshow}-{cid}-{tid}-{id}-{page}.html';
 $cfg_reurl_vote = '{vote}-{id}.html';
 $cfg_reurl_custom = '{file}.html';
-$cfg_auth_key = '4xeXWiPTeCPWJ7SE';
+$cfg_auth_key = 'NuBqmzks62svgdJ7';
 $cfg_alipay_uname = '';
 $cfg_alipay_partner = '';
 $cfg_alipay_key = '';
