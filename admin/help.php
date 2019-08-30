@@ -302,6 +302,6 @@ p strong{color:#00F;font-weight:normal;}
 	<div class="hr_10"></div>
 	<p>　　更多关于我们的信息可访问 <a href="http://phpmywind.com/" target="_blank">http://phpmywind.com</a></p>
 </div>
-<div class="footer">© 2015 phpMyWind.com</div>
+<div class="footer">© 2017 phpMyWind.com</div>
 </body>
 </html>

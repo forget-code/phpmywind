@@ -353,6 +353,6 @@ $(function(){
 		</div>
 	</div>
 </div>
-<div class="loginCopyright">© 2015 phpMyWind.com</div>
+<div class="loginCopyright">© 2017 phpMyWind.com</div>
 </body>
 </html>
