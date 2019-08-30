@@ -161,7 +161,7 @@ if($action == 'delall')
 			$sql .= "AND author='".$_SESSION['admin']."'";
 		else
 		{
-			$dosql->Execute("SELECT `flag` FROM `#@__infoflag`");
+			$dosql->Execute("SELECT `flag` FROM `#@__goodsflag`");
 			while($row = $dosql->GetArray())
 			{
 				if($row['flag'] == $flag)

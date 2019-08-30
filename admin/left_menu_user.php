@@ -96,8 +96,7 @@
 
 				$leftMenu05_Str = '';
 				$leftMenu05_Arr = array('mobile'=>'<a href="mobile.php" target="main">手机网站设置</a>',
-									'nav'=>'<a href="nav.php" target="main">导航菜单设置</a>',
-									'editfile'=>'<a href="editfile.php" target="main">默认模板管理</a>');
+									'nav'=>'<a href="nav.php" target="main">导航菜单设置</a>');
 
 				$leftMenu06_Str = '';
 				$leftMenu06_Arr = array('syscount'=>'<a href="syscount.php" target="main">数据统计</a>',
@@ -283,7 +282,7 @@
 	</div>
 </div>
 <div class="bGradient"></div>
-<div class="copyright"> © 2017 <a href="http://phpMyWind.com/" target="_blank">phpMyWind.com</a><br />
+<div class="copyright"> © 2015 <a href="http://phpMyWind.com/" target="_blank">phpMyWind.com</a><br />
 	All Rights Reserved. </div>
 <div class="tabMenu">
 	<a href="left_menu_user_name.php" title="切换到名称菜单" class="model"></a>

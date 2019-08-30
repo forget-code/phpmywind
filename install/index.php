@@ -27,7 +27,7 @@ define('IN_INSTALL', TRUE);
 
 
 //版权信息设置
-$cfg_copyright = '© 2017 PHPMYWIND.COM';
+$cfg_copyright = '© 2018 PHPMYWIND.COM';
 
 
 //提示已经安装
@@ -113,7 +113,7 @@ else if($s == 3)
 		$conn = mysqli_connect($dbhost, $dbuser, $dbpwd);
 		if($conn)
 		{
-			if(mysqli_get_server_info($conn) < '4.0')
+			if(mysqli_get_server_version($conn) < '4.0')
 			{
 				echo '<script>$("#install").append("检测到您的数据库版本过低，请更新！");</script>';
 				exit();
@@ -121,7 +121,7 @@ else if($s == 3)
 
 
 			//查询数据库
-			$res = mysqli_query($conn, 'show Databases');
+			$res = mysqli_query($conn,'show Databases');
 
 
 			//遍历所有数据库，存入数组
@@ -134,7 +134,7 @@ else if($s == 3)
 			//检查数据库是否存在，没有则创建数据库
 			if(!in_array(trim($dbname), $dbname_arr))
 			{
-				if(!mysqli_query($conn, "CREATE DATABASE `".$dbname."`"))
+				if(!mysqli_query($conn,"CREATE DATABASE `".$dbname."`"))
 				{
 					echo '<script>$("#install").append("创建数据库失败，请检查权限或联系管理员！");</script>';
 					exit();
@@ -181,7 +181,7 @@ else if($s == 3)
 			flush();
 
 			//设置数据库状态
-			mysqli_query($conn, "SET NAMES 'utf8', character_set_client=binary, sql_mode='', interactive_timeout=3600;");
+			mysqli_query($conn,"SET NAMES 'utf8', character_set_client=binary, sql_mode='', interactive_timeout=3600;");
 
 
 			//创建表结构
@@ -195,28 +195,29 @@ else if($s == 3)
 
 
 			$querys = explode(';', ClearBOM($tbstruct));
+
+
 			foreach($querys as $q)
 			{
 				if(trim($q) == '') continue;
-				mysqli_query($conn, str_replace('#@__', $tbpre, trim($q)).';');
+				mysqli_query($conn,str_replace('#@__', $tbpre, trim($q)).';');
 			}
-
 			echo '<script>$("#install").append("数据库结构导入完成！<br />");</script>';
 			ob_flush();
 			flush();
 
 
 			//创建管理组
-			mysqli_query($conn, "INSERT INTO `".$tbpre."admingroup` VALUES('1','超级管理员','超级管理员组','1','true');");
-			mysqli_query($conn, "INSERT INTO `".$tbpre."admingroup` VALUES('2','站点管理员','站点管理员组','1','true');");
-			mysqli_query($conn, "INSERT INTO `".$tbpre."admingroup` VALUES('3','文章发布员','文章发布员组','1','true');");
+			mysqli_query($conn,"INSERT INTO `".$tbpre."admingroup` VALUES('1','超级管理员','超级管理员组','1','true');");
+			mysqli_query($conn,"INSERT INTO `".$tbpre."admingroup` VALUES('2','站点管理员','站点管理员组','1','true');");
+			mysqli_query($conn,"INSERT INTO `".$tbpre."admingroup` VALUES('3','文章发布员','文章发布员组','1','true');");
 			echo '<script>$("#install").append("管理组信息导入完成！<br />");</script>';
 			ob_flush();
 			flush();
 
 
 			//创建管理员
-			mysqli_query($conn, "INSERT INTO `".$tbpre."admin` VALUES('1','".$username."','".md5(md5($password))."','','0','','1','true','127.0.0.1','".time()."');");
+			mysqli_query($conn,"INSERT INTO `".$tbpre."admin` VALUES('1','".$username."','".md5(md5($password))."','','0','','1','true','127.0.0.1','".time()."');");
 			echo '<script>$("#install").append("管理员信息导入完成！<br />");</script>';
 			ob_flush();
 			flush();
@@ -248,7 +249,7 @@ else if($s == 3)
 			INSERT INTO `#@__webconfig` VALUES('1','cfg_seotitle','SEO标题','0','string','','6');
 			INSERT INTO `#@__webconfig` VALUES('1','cfg_keyword','关键字设置','0','string','','7');
 			INSERT INTO `#@__webconfig` VALUES('1','cfg_description','网站描述','0','bstring','','8');
-			INSERT INTO `#@__webconfig` VALUES('1','cfg_copyright','版权信息','0','bstring','Copyright © 2010 - 2017 phpMyWind.com All Rights Reserved','9');
+			INSERT INTO `#@__webconfig` VALUES('1','cfg_copyright','版权信息','0','bstring','Copyright © 2015 - 2018 phpMyWind.com All Rights Reserved','9');
 			INSERT INTO `#@__webconfig` VALUES('1','cfg_hotline','客服热线','0','string','400-800-8888','10');
 			INSERT INTO `#@__webconfig` VALUES('1','cfg_icp','备案编号','0','string','','11');
 			INSERT INTO `#@__webconfig` VALUES('1','cfg_webswitch','启用站点','0','bool','Y','12');
@@ -321,7 +322,7 @@ else if($s == 3)
 			foreach($querys as $q)
 			{
 				if(trim($q) == '') continue;
-				mysqli_query($conn, str_replace('#@__', $tbpre, trim($q)).';');
+				mysqli_query($conn,str_replace('#@__', $tbpre, trim($q)).';');
 			}
 
 			echo '<script>$("#install").append("网站数据导入完成！<br />");</script>';
@@ -334,7 +335,7 @@ else if($s == 3)
 			flock($fp, 3);
 			fwrite($fp, '<?php	if(!defined(\'IN_PHPMYWIND\')) exit(\'Request Error!\');'."\r\n\r\n");
 
-			$res = mysqli_query($conn, "SELECT `varname`,`vartype`,`varvalue`,`vargroup` FROM `".$tbpre."webconfig` ORDER BY orderid ASC");
+			$res = mysqli_query($conn,"SELECT `varname`,`vartype`,`varvalue`,`vargroup` FROM `".$tbpre."webconfig` ORDER BY orderid ASC");
 			while($row = mysqli_fetch_array($res))
 			{
 				//强制去掉 '
